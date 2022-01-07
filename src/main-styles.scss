@@ -1,0 +1,57 @@
+//This where we put global styles and change variable values
+
+//import google fonts. Lato and Nunito
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
+
+$deep-yellow: #c6dd44;
+$orange: #e0bb13;
+
+$light-orange: #e7db6e;
+$light: #f1e7b6;
+$dark-orange: #332b05;
+
+// Update Bulma global variables
+$family-sans-serif: "Nunito", sans-serif;
+$primary: $orange;
+$link: $light-orange;
+
+//Update some Bulma component variables
+$contol-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+//set custom global styles (will be aplied to whole app)
+
+html {
+    background: linear-gradient(to right top, $deep-yellow, $orange);
+}
+
+html, body {
+    height: 100%;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    padding-top: 5%;
+}
+
+
+.title {
+    font-family: 'Lato';
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.modal-box {
+    min-height: 300px;
+    width: 100%;
+    max-width: 700px;
+    background: white;
+    border-radius: 5px;
+    padding: 35px;
+}
