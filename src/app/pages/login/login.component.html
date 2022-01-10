@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="centered-content">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="modal-box">
+
+            <h1 class="title has-text-primary" >LOGIN</h1>
+            <div class="field">
+                <p class="control">
+                    <input class="input is-small has-background-light is-medium" placeholder="Username"
+                        formControlName="username">
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <input type='password' class="input is-small has-background-light is-medium" placeholder="password"
+                        formControlName="password">
+                </p>
+            </div>
+            <div class="field is-pulled-right">
+                <p class="control">
+                    <button class="button is-success" type="submit">
+                        Login
+                    </button>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

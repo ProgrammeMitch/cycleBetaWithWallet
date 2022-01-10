@@ -1,1 +1,15 @@
-<p>wallet works!</p>
+<div class="profile has-background-light" *ngFor="let wallets of wallet">
+    <h1 class="title has-text-primary">WALLET</h1>
+    <div class="headers">
+        <div class="title has-text-secondary">WALLET ID: {{ wallets.walletId }} </div>
+    </div>
+    <div class="headers">
+        <div class="title has-text-secondary">BALANCE: {{ wallets.walletAmount }} </div>
+    </div>
+    <!-- Profile Display-->
+    <div class="profile-content">
+        <div class="profile-tags title has-text-primary">FUND WALLET</div>
+        <div class="profile-tags title has-text-primary">WITHDRAWAL</div>
+        <div class="profile-tags title has-text-primary">MY CYCLES</div>
+    </div>
+</div>
