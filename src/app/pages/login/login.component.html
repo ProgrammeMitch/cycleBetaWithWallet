@@ -2,14 +2,14 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="modal-box">
 
-            <h1 class="title has-text-primary" >LOGIN</h1>
+            <h1 class="title has-text-primary">LOGIN</h1>
             <div class="field">
                 <p class="control">
                     <input class="input is-small has-background-light is-medium" placeholder="Username"
                         formControlName="username">
                 </p>
             </div>
-            <div class="field">
+            <div class="field" style="display: flex; justify-content: flex-end">
                 <p class="control">
                     <input type='password' class="input is-small has-background-light is-medium" placeholder="password"
                         formControlName="password">
@@ -21,6 +21,11 @@
                         Login
                     </button>
                 </p>
+            </div>
+
+            <!-- <br> -->
+            <div class="field">
+                <p>Not got an account? <br> <a routerLink="/signup">Sign up</a> now!</p>
             </div>
         </div>
     </form>

@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<div class="centered-content">
+    <div class="container">
+        <div class="profile has-background-light" *ngFor="let profiles of profile">
+            <h1 class="title has-text-primary">WELCOME BACK</h1>
+            <div class="headers">
+                <div class="title has-text-secondary">{{ profiles.username }} </div>
+            </div>
+
+            <!-- Profile Display-->
+            <div class="profile-content">
+                <div class="profile-tags title has-text-primary">
+                    <a [routerLink]="['/wallet']" (click) = createWallet(profiles.username)>
+                        WALLET
+                    </a>
+                </div>
+                <div class="profile-tags title has-text-primary">
+                    <a routerLink="/cycle-view">
+                        CYCLES
+                    </a>
+                </div>
+                <div class="profile-tags title has-text-primary">MESSAGES</div>
+                <div class="profile-tags title has-text-primary">INVEST</div>
+                <div class="profile-tags title has-text-primary">REFER</div>
+                <div class="profile-tags title has-text-primary">SETTINGS</div>
+                
+            </div>
+        </div>
+    </div>
+</div>

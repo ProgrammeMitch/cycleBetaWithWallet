@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class WalletComponent implements OnInit {
 
-
   wallet: Wallet;
 
   constructor(private walletService: WalletService, private route: ActivatedRoute, private router: Router) { }
@@ -19,7 +18,6 @@ export class WalletComponent implements OnInit {
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
     })
-    console.log(this.wallet)
   }
 
 }

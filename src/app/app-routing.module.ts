@@ -4,14 +4,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
-
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'wallet', component: WalletComponent}
+  { path: 'wallet', component: WalletComponent},
+  { path: 'welcome', component: WelcomeComponent}
 ];
 
 @NgModule({

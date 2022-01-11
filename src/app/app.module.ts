@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WalletComponent } from './pages/wallet/wallet.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    WalletComponent
+    WalletComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

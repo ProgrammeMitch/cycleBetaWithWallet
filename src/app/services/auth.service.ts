@@ -17,9 +17,7 @@ export class AuthService {
     return this.webservice.login(username, password).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
-      console.log('Logged in')
       })
     )
   }
