@@ -13,6 +13,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     SignupComponent,
     DashboardComponent,
     WalletComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FundWalletComponent
   ],
   imports: [
     BrowserModule,

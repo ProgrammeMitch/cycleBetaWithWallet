@@ -13,6 +13,11 @@ export class WalletService {
     return this.webReqService.post('wallet', wallet);
   }
 
+  updateWallet(walletId: string, obj: Wallet) {
+    //console.log('wallet/'+walletId)
+    return this.webReqService.patch('wallet/'+walletId, obj)
+  }
+
   getWallet() {
     return this.webReqService.get('wallet');
   }
