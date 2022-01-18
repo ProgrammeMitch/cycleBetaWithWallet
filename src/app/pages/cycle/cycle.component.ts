@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Cycle } from 'src/app/models/cycle.model';
 import { Wallet } from 'src/app/models/wallet.model';
 import { CycleService } from 'src/app/services/cycle.service';
+import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
   selector: 'app-cycle',
@@ -13,13 +14,15 @@ export class CycleComponent implements OnInit {
 
   cycles: Cycle;
   wallet: Wallet;
+  myWallet: Wallet;
+  check = false;
 
-  constructor(private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.cycles = params['_id']
-      this.cycleService.getCycleDetails(params._id).subscribe((cycleDetails: Cycle) => {
+      this.cycles = params['cycleId']
+      this.cycleService.getCycleDetails(params.cycleId).subscribe((cycleDetails: Cycle) => {
         this.cycles = cycleDetails;
       })
     })
@@ -27,17 +30,29 @@ export class CycleComponent implements OnInit {
 
     this.cycleService.getCycles().subscribe((cycles: Cycle) => {
       this.cycles = cycles;
-
     })
   }
 
   getDetails(str: string) {
     //console.log(str)
     this.cycleService.getCycleDetails(str).subscribe((cycleDetails: Cycle) => {
+      if (cycleDetails[0].wallet.length < 4) {
+        this.check = true;
+      }
       this.wallet = cycleDetails[0].wallet
       return this.wallet;
     })
-    console.log(this.wallet)
   }
 
+  joinCycle() {
+    this.walletService.getWallet().subscribe((wallet: Wallet) => {
+      this.route.params.subscribe((params: Params) => {
+        this.cycleService.joinCycle(params.cycleId, {wallet: wallet[0] }).subscribe(() => {
+          console.log('Data added successfully!');
+          alert('joined Cycle Succesfully');
+          this.router.navigate(['cycle', params.cycleId])
+        })
+      })
+    })
+  }
 }

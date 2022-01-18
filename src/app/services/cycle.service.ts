@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cycle } from '../models/cycle.model';
+import { Wallet } from '../models/wallet.model';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class CycleService {
     return this.webReqService.post('cycles', cycle)
   }
 
+  joinCycle(cycleId: String, wallet: Object) {
+    return this.webReqService.patch(`cycles/${cycleId}`, wallet)
+  }
+  
   getCycles() {
     //get all cycles
     return this.webReqService.get('cycles')

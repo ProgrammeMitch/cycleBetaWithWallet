@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { empty, Observable, throwError } from 'rxjs';
+import { empty, Observable, Subject, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
@@ -12,6 +12,8 @@ export class WebReqInterceptor implements HttpInterceptor {
 
     refreshingAccessToken: boolean;
 
+    accessTokenRefreshed: Subject<any> = new Subject();
+
     constructor(private authService: AuthService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -22,7 +24,7 @@ export class WebReqInterceptor implements HttpInterceptor {
             catchError((error: HttpErrorResponse) => {
                 //console.log(error);
 
-                if (error.status === 401 && !this.refreshingAccessToken) {
+                if (error.status === 401) {
                     //if 401 (Unauthorised) error
 
                     //refresh access token
@@ -57,12 +59,23 @@ export class WebReqInterceptor implements HttpInterceptor {
     }
 
     refreshAccessToken() {
-        this.refreshingAccessToken = true;
-        return this.authService.getNewAccessToken().pipe(
-            tap(() => {
-                this.refreshingAccessToken = false;
-                console.log('Access Token Refreshed')
+        if (this.refreshingAccessToken) {
+            return new Observable(observer => {
+                this.accessTokenRefreshed.subscribe(() => {
+                    //this will run when the access token is refreshed
+                    observer.next();
+                    observer.complete();
+                })
             })
-        )
+        } else {
+            this.refreshingAccessToken = true;
+            return this.authService.getNewAccessToken().pipe(
+                tap(() => {
+                    console.log('Access Token Refreshed')
+                    this.refreshingAccessToken = false;
+                    this.accessTokenRefreshed.next()
+                })
+            )
+        }
     }
 }
