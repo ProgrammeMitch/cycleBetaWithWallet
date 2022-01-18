@@ -13,6 +13,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { CycleComponent } from './pages/cycle/cycle.component';
+import { NewCycleComponent } from './pages/cycle/new-cycle/new-cycle.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     SignupComponent,
     DashboardComponent,
     WalletComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CycleComponent,
+    NewCycleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,96 @@
+@import '../../../main-styles.scss';
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 680px;
+}
+
+.cycle-list {
+    display: flex;
+    flex-direction: column;
+    width: 190px;
+    background-color: white;
+    padding: 42px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 42px;
+    width: 100%;
+
+}
+
+.list-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    flex-grow: 1;
+    font-size: 15px;
+    
+    .list-menu-item {
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        width: 100%;
+        color: #5f5f5f;
+        margin-bottom: 2.5px;
+        padding: 7px;
+
+        &:hover {
+            background: $light;
+        }
+
+        &.is-active {
+            background-color: $deep-yellow;
+            color: $dark-orange;
+        }
+    }
+}
+
+.profile-content {
+    display: flex;
+    background: white;
+    padding: 20px 20px;
+    height: 100%;
+    width: 100%;
+    flex-flow: wrap;
+
+    
+    .profile-tags {
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        background: $deep-yellow;
+        width: 30%;
+        height: 45%;
+        flex-grow: 1;
+        font-size: 35px;
+
+        &:hover {
+            box-shadow: 1.5px 1.5px $orange;
+            transition: ease-in-out 0.2s;
+            cursor: pointer;
+        }
+    }
+
+}
+
+
+.cycle-hero {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}

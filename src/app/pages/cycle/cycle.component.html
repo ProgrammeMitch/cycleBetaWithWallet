@@ -1,0 +1,39 @@
+<div class="centered-content">
+    <div class="container">
+        <div class="cycle-list has-background-white">
+            <h1 class="title has-text-primary">CYCLES</h1>
+            <div class="list-menu">
+                <a class="list-menu-item" *ngFor="let cycle of cycles" routerLinkActive='is-active'
+                    [routerLink]="['/cycle', cycle._id]">
+                    <p (click) = "getDetails(cycle._id)" >{{ cycle.cycleAmount }}</p>
+                </a>
+            </div>
+
+            <button class="button is-primary has-text-white" routerLink="/new-cycle">Create Cycle</button>
+        </div>
+        <div class="profile has-background-light">
+            <h1 class="title has-text-primary">PROFILE</h1>
+
+            <a class="list-menu-item" *ngFor="let wallets of wallet">
+            <p >{{ wallets._id }}</p>
+        </a>
+
+
+            <!--<form [formGroup]="joinForm" (ngSubmit)="joinCycle($event)">
+                <div class="field is-grouped" style="padding: 10px;">
+                    <p class="control is-expanded">
+                        <input class="input" type="text" placeholder="WALLET ID" formControlName="walletId">
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" type="text" placeholder="USERNAME" formControlName="username">
+                    </p>
+                    <p class="control" type="submit">
+                        <button class="button is-primary has-text-white">
+                            Join
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>-->
+    </div>
+</div>
