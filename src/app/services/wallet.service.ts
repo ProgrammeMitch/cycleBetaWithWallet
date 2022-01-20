@@ -14,7 +14,6 @@ export class WalletService {
   }
 
   updateWallet(walletId: string, obj: Wallet) {
-    //console.log('wallet/'+walletId)
     return this.webReqService.patch('wallet/'+walletId, obj)
   }
 

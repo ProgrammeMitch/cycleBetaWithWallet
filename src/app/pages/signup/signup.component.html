@@ -11,13 +11,26 @@
             </div>
             <div class="field">
                 <p class="control">
-                    <input type='password' class="input is-small has-background-light is-medium" placeholder="password"
+                    <input type='password' class="input is-small has-background-light is-medium" placeholder="Password"
                         formControlName="password">
                 </p>
             </div>
+            <div class="field">
+                <p class="control">
+                    <input type='password' class="input is-small has-background-light is-medium" placeholder="Enter Password Again"
+                        formControlName="password2">
+                </p>
+                <div *ngIf="password2.touched || password2.dirty">
+                    <span *ngIf="!passwordMatch" class="danger"><i>Both Passwords Must Match</i></span>
+                    <span *ngIf="passwordMatch" class="danger"></span>
+                </div>
+                <div *ngIf="badRequestError">
+                    <span class="danger"><i>Username is Invalid</i></span>
+                </div>
+            </div>
             <div class="field is-pulled-right">
                 <p class="control">
-                    <button class="button is-success" type="submit">
+                    <button class="button is-success" [disabled]="signupForm.invalid" type="submit">
                         Sign Up
                     </button>
                 </p>
@@ -28,5 +41,6 @@
                 <p>Got an account? <br> <a routerLink="/login">Login</a> here!</p>
             </div>
         </div>
+
     </form>
 </div>

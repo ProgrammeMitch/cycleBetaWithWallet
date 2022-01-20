@@ -16,6 +16,7 @@ export class CycleComponent implements OnInit {
   wallet: Wallet;
   myWallet: Wallet;
   check = false;
+  cycleId: string;
 
   constructor(private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
 
@@ -34,7 +35,7 @@ export class CycleComponent implements OnInit {
   }
 
   getDetails(str: string) {
-    //console.log(str)
+    this.cycleId = str;
     this.cycleService.getCycleDetails(str).subscribe((cycleDetails: Cycle) => {
       if (cycleDetails[0].wallet.length < 4) {
         this.check = true;
@@ -46,13 +47,12 @@ export class CycleComponent implements OnInit {
 
   joinCycle() {
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
-      this.route.params.subscribe((params: Params) => {
-        this.cycleService.joinCycle(params.cycleId, {wallet: wallet[0] }).subscribe(() => {
+        this.cycleService.joinCycle(this.cycleId, {wallet: wallet[0] }).subscribe(() => {
           console.log('Data added successfully!');
           alert('joined Cycle Succesfully');
-          this.router.navigate(['cycle', params.cycleId])
+          this.router.navigate(['cycle'])
         })
-      })
+
     })
   }
 }

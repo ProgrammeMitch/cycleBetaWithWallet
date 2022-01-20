@@ -1,1 +1,44 @@
-<button (click) = "fundWallet()" >Increase wallet by 10</button>
+<div class="centered-content">
+    <form [formGroup]="fundWallet" (ngSubmit)="fundWallets()">
+    <div class="modal-box">
+        <h1 class="title">Fund Your Wallet</h1>
+        <!--<div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Your Unique ID" formControlName="cycleId">
+            </p>
+          </div>-->
+          <div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Amount" formControlName="walletAmount">
+            </p>
+          </div>
+          <!--<div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Duration" formControlName="cycleDuration">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Start Date" formControlName="cycleStartDate">
+            </p>
+          </div>
+
+          <div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Maximum Number" formControlName="maximumCycleNum">
+            </p>
+          </div>-->
+          <div class="field">
+            <p class="control">
+              <button class="button is-success" type="submit">
+                Approve
+              </button>
+              <button class="button is-danger" routerLink="/">Back</button>
+
+            </p>
+          </div>
+
+    </div>
+</form>
+</div>
+

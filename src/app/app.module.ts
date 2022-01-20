@@ -13,12 +13,9 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-<<<<<<< HEAD
 import { CycleComponent } from './pages/cycle/cycle.component';
 import { NewCycleComponent } from './pages/cycle/new-cycle/new-cycle.component';
-=======
 import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.component';
->>>>>>> master
 
 @NgModule({
   declarations: [
@@ -28,12 +25,9 @@ import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.comp
     DashboardComponent,
     WalletComponent,
     WelcomeComponent,
-<<<<<<< HEAD
     CycleComponent,
-    NewCycleComponent
-=======
+    NewCycleComponent,
     FundWalletComponent
->>>>>>> master
   ],
   imports: [
     BrowserModule,

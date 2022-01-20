@@ -32,13 +32,15 @@ export class NewCycleComponent implements OnInit {
   createNewCycle() {
     console.log(this.cycleForm.value.cycleAmount)
     this.cycles = this.cycleForm.value.cycleAmount
-    this.cycleService.createCycle({cycleAmount: this.cycleForm.value.cycleAmount, wallet: this.wallet}).subscribe((cycle: Cycle) => {
-      console.log(cycle);
-      console.log('Data added successfully!')
-      this.router.navigate(['cycle', cycle._id ])
-      alert('Cycle Created')
-    }, (err) => {
-      console.log(err)
+    this.route.params.subscribe((params: Params) => {
+      this.cycleService.createCycle({ cycleAmount: this.cycleForm.value.cycleAmount, wallet: this.wallet }).subscribe((cycle: Cycle) => {
+        console.log(cycle);
+        console.log('Data added successfully!')
+        this.router.navigate(['cycle'])
+        alert('Cycle Created')
+      }, (err) => {
+        console.log(err)
+      })
     })
   }
 }

@@ -15,6 +15,9 @@
                         formControlName="password">
                 </p>
             </div>
+            <div *ngIf="badRequestError">
+                <span class="danger"><i>Username or Password Incorect</i></span>
+            </div>
             <div class="field is-pulled-right">
                 <p class="control">
                     <button class="button is-success" type="submit">

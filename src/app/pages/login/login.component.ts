@@ -13,6 +13,7 @@ import { Profile } from '../../models/profile.model';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   profileForm: Profile;
+  badRequestError = false;
 
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) { }
 
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
     this.profileForm = this.loginForm.value;
     this.authService.login(this.profileForm.username, this.profileForm.password).subscribe((res: HttpResponse<any>) => {
       if (res.status === 200) {
-
+        this.badRequestError = false;
         this.router.navigate(['/dashboard'])
       }
     })
+    this.badRequestError = true;
+    this.loginForm.reset();
   }
 }

@@ -3,8 +3,7 @@
         <div class="cycle-list has-background-white">
             <h1 class="title has-text-primary">CYCLES</h1>
             <div class="list-menu">
-                <a class="list-menu-item" *ngFor="let cycle of cycles" routerLinkActive='is-active'
-                    [routerLink]="['/cycle', cycle._id]">
+                <a class="list-menu-item" *ngFor="let cycle of cycles" routerLinkActive='is-active'>
                     <p (click)="getDetails(cycle._id)">{{ cycle.cycleAmount }}</p>
                 </a>
             </div>
@@ -14,6 +13,7 @@
         <div class="profile has-background-light">
             <h1 class="title has-text-primary">PROFILE</h1>
 
+            
             <div class="list-menu-item" *ngFor="let wallets of wallet">
                 <p>{{ wallets._id }}</p>
             </div>
