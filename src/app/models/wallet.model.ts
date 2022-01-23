@@ -1,4 +1,5 @@
 export interface Wallet {
-    walletId: string;
-    walletAmount: Number
+    walletId: String,
+    walletAmount: Number,
+    cycle: String
 }

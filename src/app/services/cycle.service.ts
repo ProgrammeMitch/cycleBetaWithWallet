@@ -25,7 +25,6 @@ export class CycleService {
   }
   getCycleDetails(cycleId: string) {
     //get all details (wallets) within each cycle
-    console.log(`cycles/${cycleId}`)
     return this.webReqService.get(`cycles/${cycleId}`)
   }
 }

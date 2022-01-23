@@ -38,12 +38,12 @@ export class DashboardComponent implements OnInit {
       if (this.wallet[0].walletId === str) {
         console.log('walletExists')
       } else {
-        this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance }).subscribe((wallet: Wallet) => {
+        this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
           console.log(wallet);
         })
       }
     } else {
-      this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance }).subscribe((wallet: Wallet) => {
+      this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
       })
     }
   }

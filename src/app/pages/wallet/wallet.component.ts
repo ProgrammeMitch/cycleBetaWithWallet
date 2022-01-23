@@ -17,7 +17,11 @@ export class WalletComponent implements OnInit {
   ngOnInit(): void {
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
+      console.log(this.wallet)
     })
   }
 
+  navigate() {
+    this.router.navigate(['wallet', this.wallet[0]._id, 'my-cycles'])
+  }
 }

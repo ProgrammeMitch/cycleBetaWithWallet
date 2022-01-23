@@ -16,6 +16,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { CycleComponent } from './pages/cycle/cycle.component';
 import { NewCycleComponent } from './pages/cycle/new-cycle/new-cycle.component';
 import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.component';
+import { MyCyclesComponent } from './pages/wallet/my-cycles/my-cycles.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.comp
     WelcomeComponent,
     CycleComponent,
     NewCycleComponent,
-    FundWalletComponent
+    FundWalletComponent,
+    MyCyclesComponent
   ],
   imports: [
     BrowserModule,

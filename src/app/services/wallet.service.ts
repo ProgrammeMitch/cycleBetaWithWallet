@@ -13,7 +13,7 @@ export class WalletService {
     return this.webReqService.post('wallet', wallet);
   }
 
-  updateWallet(walletId: string, obj: Wallet) {
+  updateWallet(walletId: string, obj: Object) {
     return this.webReqService.patch('wallet/'+walletId, obj)
   }
 

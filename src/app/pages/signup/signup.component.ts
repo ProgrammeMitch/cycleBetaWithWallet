@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
       }
       console.log(res)
     })
-    this.badRequestError = true;
+    if (this.badRequestError) { this.badRequestError = true;}
     this.signupForm.reset();
   }
 

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard'])
       }
     })
-    this.badRequestError = true;
+    if (this.badRequestError) { this.badRequestError = true;}
     this.loginForm.reset();
   }
 }

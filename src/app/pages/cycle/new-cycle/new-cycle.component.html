@@ -2,11 +2,16 @@
     <form [formGroup]="cycleForm" (ngSubmit)="createNewCycle()">
     <div class="modal-box">
         <h1 class="title">Create Your CYCLE</h1>
-        <!--<div class="field">
+        <div class="field">
             <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Your Unique ID" formControlName="cycleId">
+              <input class="input is-small has-background-light is-medium" placeholder="How Long Is The Cycle?" formControlName="cycleDuration">
             </p>
-          </div>-->
+          </div>
+          <div class="field">
+            <p class="control">
+              <input class="input is-small has-background-light is-medium" placeholder="Monthly or Weekly" formControlName="frequency">
+            </p>
+          </div>
           <div class="field">
             <p class="control">
               <input class="input is-small has-background-light is-medium" placeholder="Amount" formControlName="cycleAmount">
@@ -14,18 +19,7 @@
           </div>
           <!--<div class="field">
             <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Duration" formControlName="cycleDuration">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Start Date" formControlName="cycleStartDate">
-            </p>
-          </div>
-
-          <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Maximum Number" formControlName="maximumCycleNum">
+              <input class="input is-small has-background-light is-medium" placeholder="Select Start Date" [disabled]="disable" formControlName="cycleStartDate">
             </p>
           </div>-->
           <div class="field">

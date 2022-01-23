@@ -16,12 +16,16 @@ export class NewCycleComponent implements OnInit {
   cycles: Cycle;
   wallet: Wallet;
   cycleForm: FormGroup;
+  disable = true
 
   constructor(private fb: FormBuilder, private cycleService: CycleService, private route: ActivatedRoute, private router: Router, private walletService: WalletService) { }
 
   ngOnInit(): void {
     this.cycleForm = this.fb.group({
-      cycleAmount: ['', Validators.required]
+      cycleDuration: ['', Validators.required],
+      cycleAmount: ['', Validators.required],
+      cycleStartDate: [''],
+      frequency: ['', Validators.required]
     })
 
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
@@ -31,16 +35,21 @@ export class NewCycleComponent implements OnInit {
 
   createNewCycle() {
     console.log(this.cycleForm.value.cycleAmount)
-    this.cycles = this.cycleForm.value.cycleAmount
-    this.route.params.subscribe((params: Params) => {
-      this.cycleService.createCycle({ cycleAmount: this.cycleForm.value.cycleAmount, wallet: this.wallet }).subscribe((cycle: Cycle) => {
+      this.cycleService.createCycle({ 
+        cycleDuration: this.cycleForm.value.cycleDuration, 
+        cycleAmount: this.cycleForm.value.cycleAmount, 
+        cycleStartDate: this.cycleForm.value.cycleStartDate,
+        frequency: this.cycleForm.value.frequency,
+        wallet: this.wallet 
+      }).subscribe((cycle: Cycle) => {
+        this.walletService.updateWallet(this.wallet[0]._id + '/my-cycle', {cycle: cycle._id} ).subscribe(() => {
         console.log(cycle);
         console.log('Data added successfully!')
         this.router.navigate(['cycle'])
         alert('Cycle Created')
+        })
       }, (err) => {
         console.log(err)
       })
-    })
   }
 }
