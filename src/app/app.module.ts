@@ -17,6 +17,9 @@ import { CycleComponent } from './pages/cycle/cycle.component';
 import { NewCycleComponent } from './pages/cycle/new-cycle/new-cycle.component';
 import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.component';
 import { MyCyclesComponent } from './pages/wallet/my-cycles/my-cycles.component';
+import { ProgressComponent } from './pages/welcome/progress/progress.component';
+import { ProgressStepComponent } from './pages/welcome/progress/progress-step/progress-step.component';
+import { ProgressStepDirective } from './pages/welcome/progress/progress-step.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { MyCyclesComponent } from './pages/wallet/my-cycles/my-cycles.component'
     CycleComponent,
     NewCycleComponent,
     FundWalletComponent,
-    MyCyclesComponent
+    MyCyclesComponent,
+    ProgressComponent,
+    ProgressStepComponent,
+    ProgressStepDirective
   ],
   imports: [
     BrowserModule,

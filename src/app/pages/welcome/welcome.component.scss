@@ -2,31 +2,24 @@
 
 .container {
     display: flex;
-    width: 100%;
+    width: 100px;
     height: 100%;
+    justify-content: center;
     max-width: 1000px;
     max-height: 680px;
-}
-
-.cycle-list {
-    display: flex;
-    flex-direction: column;
-    width: 190px;
-    background-color: white;
-    padding: 42px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    //border: 1px red solid;
 }
 
 .profile {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 42px;
-    width: 100%;
-
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 30px;
+    width: 70%;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, .1);
 }
 
 .title {
@@ -70,27 +63,6 @@
     height: 100%;
     width: 100%;
     flex-flow: wrap;
-
-    
-    .profile-tags {
-        display: flex;
-        flex-direction: row;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-        margin: 5px;
-        background: $deep-yellow;
-        width: 30%;
-        height: 45%;
-        flex-grow: 1;
-        font-size: 35px;
-
-        &:hover {
-            box-shadow: 1.5px 1.5px $orange;
-            transition: ease-in-out 0.2s;
-            cursor: pointer;
-        }
-    }
-
+    justify-content: center;
 
 }
