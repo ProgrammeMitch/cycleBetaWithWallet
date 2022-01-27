@@ -12,4 +12,8 @@ export class ProfileService {
   getUserDetails(userId: string) {
     return this.webReqService.get(`users/${userId}`);
   }
+
+  updateUserDetails(userId: string, update: Object) {
+    return this.webReqService.patch(`users/${userId}`, update);
+  }
 }

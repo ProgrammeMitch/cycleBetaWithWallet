@@ -17,15 +17,19 @@ export class DashboardComponent implements OnInit {
   profile: Profile;
   newAccountBalance = 1;
   wallet: Wallet;
-  boolean: false;
+  walletPresent: boolean;
+  locked = true;
 
   constructor(private walletService: WalletService, private profileService: ProfileService, private route: ActivatedRoute, private authServive: AuthService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.profileService.getUserDetails(this.authServive.getUserId()).subscribe((user: Profile) => {
-        //console.log(user)
+        console.log(user)
         this.profile = user;
+        if (this.walletPresent === undefined) {
+          this.walletPresent = true
+        }
       })
     })
     this.walletService.getWallet().subscribe((wallet: Wallet) => {

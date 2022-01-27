@@ -3,18 +3,29 @@
     <div class="modal-box">
         <h1 class="title">Create Your CYCLE</h1>
         <div class="field">
-            <p class="control">
+          <p class="control">Duration
               <input class="input is-small has-background-light is-medium" placeholder="How Long Is The Cycle?" formControlName="cycleDuration">
+              <span *ngIf="onlyNumbersCycleDuration" style="color: red;">Invalid Entry</span>
             </p>
           </div>
+
           <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Monthly or Weekly" formControlName="frequency">
-            </p>
+            <div>
+            <p class="control">Frequency</p>
+              <div class="selected">
+              <select formControlName="frequency" style="width: 100%; height: 100%;">
+                <option>Daily</option>
+                <option>Weekly</option>
+                <option>Monthly</option>
+              </select>
+            </div>
           </div>
+          </div>
+
           <div class="field">
-            <p class="control">
+            <p class="control">Value
               <input class="input is-small has-background-light is-medium" placeholder="Amount" formControlName="cycleAmount">
+              <span *ngIf="onlyNumbersCycleAmount" style="color: red;">Invalid Entry</span>
             </p>
           </div>
           <!--<div class="field">

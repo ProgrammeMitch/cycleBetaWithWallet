@@ -52,4 +52,22 @@ export class NewCycleComponent implements OnInit {
         console.log(err)
       })
   }
+
+  get onlyNumbersCycleDuration() {
+    if (this.cycleForm.value.cycleDuration) {
+      let zero = this.cycleForm.value.cycleDuration * 0
+      if (zero !== 0) {
+        return true
+      }
+    }
+  }
+
+  get onlyNumbersCycleAmount() {
+    if (this.cycleForm.value.cycleAmount) {
+      let zero = this.cycleForm.value.cycleAmount * 0
+      if (zero !== 0) {
+        return true
+      }
+    }
+  }
 }

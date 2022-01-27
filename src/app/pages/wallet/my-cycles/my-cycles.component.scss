@@ -6,6 +6,7 @@
     height: 100%;
     max-width: 1000px;
     max-height: 680px;
+    justify-content: center;
 }
 
 .cycle-list {
@@ -13,20 +14,20 @@
     flex-direction: column;
     width: 190px;
     background-color: white;
-    padding: 42px;
+    padding: 32px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
 }
 
 .profile {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 42px;
-    width: 100%;
-
+    padding: 32px;
+    width: 70%;
+    box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, .2);
 }
 
 .list-menu {
@@ -54,6 +55,10 @@
             color: $dark-orange;
         }
     }
+}
+
+p {
+    font-size: .7rem;
 }
 
 .profile-content {

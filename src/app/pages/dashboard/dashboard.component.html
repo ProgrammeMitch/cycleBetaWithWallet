@@ -7,9 +7,9 @@
             </div>
 
             <!-- Profile Display-->
-            <div class="profile-content">
+            <div class="profile-content" [disabled]="walletPresent">
                 <div class="profile-tags title has-text-primary">
-                    <a [routerLink]="['/wallet']" (click) = createWallet(profiles.username)>
+                    <a [routerLink]="['/wallet']" (click)=createWallet(profiles.username)>
                         WALLET
                     </a>
                 </div>
@@ -18,11 +18,16 @@
                         CYCLES
                     </a>
                 </div>
-                <div class="profile-tags title has-text-primary">MESSAGES</div>
-                <div class="profile-tags title has-text-primary">INVEST</div>
-                <div class="profile-tags title has-text-primary">REFER</div>
-                <div class="profile-tags title has-text-primary">AJO</div>
-                
+                <div class="profile-tags title has-text-primary">
+                    <div class="flex-column">
+                        <p [disabled]="locked">MESSAGES</p> <br>
+                        <span style="font-size: 10px; color: red;" *ngIf="locked">(Unavailable)</span>
+                    </div>
+                </div>
+                <div class="profile-tags title has-text-primary" [disabled]="locked">INVEST</div>
+                <div class="profile-tags title has-text-primary" [disabled]="locked">REFER</div>
+                <div class="profile-tags title has-text-primary" [disabled]="locked">AJO</div>
+
             </div>
         </div>
     </div>

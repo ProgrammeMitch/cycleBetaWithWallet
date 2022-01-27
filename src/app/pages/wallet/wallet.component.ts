@@ -18,6 +18,7 @@ export class WalletComponent implements OnInit {
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
       console.log(this.wallet)
+      
     })
   }
 

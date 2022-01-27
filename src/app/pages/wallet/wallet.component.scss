@@ -6,17 +6,19 @@
     height: 100%;
     max-width: 1000px;
     max-height: 680px;
+    justify-content: center;
 }
 
 .profile {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 42px;
-    width: 100%;
-
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 30px;
+    width: 70%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
 }
 
 .title {
@@ -45,7 +47,7 @@
         margin: 5px;
         background: $deep-yellow;
         width: 30%;
-        height: 65%;
+        height: 55%;
         flex-grow: 1;
         font-size: 30px;
 

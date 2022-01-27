@@ -1,40 +1,166 @@
 <div class="centered-content">
-    <div class="container">
-        <div class="profile has-background-light">
-            <h1 class="title has-text-primary">WELCOME</h1>
-            <!-- Profile Forms-->
-            <div class="profile-content">
+  <div class="container">
+    <div class="profile has-background-light">
+      <h1 *ngIf="userForm1" class="title has-text-primary">WELCOME TO THE CYCLE</h1>
 
-                            <!-- Start of Profile Forms-->
+      <!-- Profile Forms-->
+      <div class="profile-content">
 
-
-<app-progress>
-    <app-progress-step>
-        <h1>Step 1</h1>
-        <button progressStepNext>next</button>
-    </app-progress-step>
-    <app-progress-step>
-        <h1>Step 2</h1>
-        <button progressStepPrev>prev</button>
-        <button progressStepNext>next</button>
-    </app-progress-step>
-    <app-progress-step>
-        <h1>Step 3</h1>
-        <button progressStepPrev>prev</button>
-        <button progressStepNext>next</button>
-    </app-progress-step>
-    <app-progress-step>
-        <h1>Step 4</h1>
-        <button progressStepPrev>prev</button>
-        <button progressStepNext>next</button>
-    </app-progress-step>
-</app-progress>
-
-
-                            <!-- End of Profile Forms-->
-
-
+        <!-- Start of Profile Forms-->
+        <app-progress>
+          <app-progress-step>
+            <!--Start of Step 1-->
+            <p>What is <b>THE CYCLE</b> ?</p>
+            <p><b>THE CYCLE</b> is a safe and secure centralised contribution platform where everyone participates in a
+              monthly or weekly contribution.</p>
+            <p>First things First. Lets get to know you</p>
+            <form [formGroup]="userForm1" (ngSubmit)="updateUser(userForm1)">
+              <div class="form-box">
+                <div class="field">
+                  <p class="control">First Name:
+                    <input class="input is-small has-background-light is-small" placeholder="What is your First Name?"
+                      formControlName="firstName">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">Last Name
+                    <input class="input is-small has-background-light is-small" placeholder="What is your Last Name?"
+                      formControlName="lastName">
+                  </p>
+                </div>
+                <div class="field">
+                  <div>
+                    <p class="control">Marital Status</p>
+                    <div class="selected">
+                    <select formControlName="maritalStatus" style="width: 100%; height: 100%;">
+                      <option>Married</option>
+                      <option>Single</option>
+                    </select>
+                  </div>
+                  </div>
+                  <!--<p class="control">Marital Status
+                    <input class="input is-small has-background-light is-medium" placeholder="You don Marry?"
+                      formControlName="maritalStatus">
+                  </p>-->
+                </div>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                </p>
+              </div>
+            </form>
+            <!--End of Step 1-->
+          </app-progress-step>
+          <app-progress-step>
+            <!--Start of Step 2-->
+            <div *ngFor="let user of userProfile">
+              <p>HI! <b>{{ user.firstName }}</b><i style="color: red;"> (that's such a cool name btw).</i><b>THE
+                  CYCLE</b> is glad that you have made it this far. But this is where fantasy meets reality because For
+                every cycle to be a success, there has to be a consistent level of trust amongst all participants. The
+                real question here is...</p>
+              <p><b>Can we trust you?</b></p>
+              <form [formGroup]="userForm2" (ngSubmit)="updateUser(userForm2)">
+                <div class="form-box">
+                  <div class="field">
+                    <p class="control">Phone Number:
+                      <input class="input is-small has-background-light is-small" placeholder="Phone Number"
+                        formControlName="phoneNumber">
+                        <span *ngIf="onlyNumbersPhone"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control">Bank Verification Number
+                      <input class="input is-small has-background-light is-small" placeholder="BVN"
+                        formControlName="bvn">
+                        <span *ngIf="onlyNumbersBvn"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control">National Identity Number
+                      <input class="input is-small has-background-light is-small" placeholder="NIN"
+                        formControlName="nin">
+                        <span *ngIf="onlyNumbersNin"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button progressStepPrev class="button is-danger is pulled left">Back</button>
+                    <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                  </p>
+                </div>
+              </form>
             </div>
-        </div>
+            <!--End of Step 2-->
+          </app-progress-step>
+          <app-progress-step>
+            <!--Start of Step 3-->
+            <div *ngFor="let user of userProfile">
+              <p><b>GREAT!! </b>We only deal with the trustworthy</p>
+              <p>How about you tell us more about yourself na...</p>
+              <form [formGroup]="userForm3" (ngSubmit)="updateUser(userForm3)">
+                <div class="form-box">
+                  <div class="field">
+                    <p class="control">Occupation:
+                      <input class="input is-small has-background-light is-small" placeholder="What do your do"
+                        formControlName="occupation">
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control">Age
+                      <input class="input is-small has-background-light is-small" placeholder="How old are you?"
+                        formControlName="age">
+                        <span *ngIf="onlyNumbersAge"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <!--<p class="control">Salary Range
+                      <input class="input is-small has-background-light is-small" placeholder="How much do you earn"
+                        formControlName="salary">
+                    </p>-->
+                    <div>
+                    <p class="control">Earning</p>
+                      <div class="selected">
+                      <select formControlName="salary" style="width: 100%; height: 100%;">
+                        <option>10,000 - 50,000</option>
+                        <option>50,000 - 100,000</option>
+                        <option>100,000 - 200,000</option>
+                        <option>200,000 - 500,000</option>
+                        <option>500,000 - 1,000,000</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button progressStepPrev class="button is-danger is pulled left">Back</button>
+                    <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                  </p>
+                </div>
+              </form>
+            </div>
+            <!--End of Step 3-->
+          </app-progress-step>
+          <app-progress-step>
+            <!--Start of Step 4-->
+            <div class="field">
+              <p><b>FINALLY!!!</b></p>
+              <p class="control">
+                <button progressStepPrev class="button is-danger is pulled left">Back</button>
+                <button progressStepNext class="button is-success is-pulled-right" (click)=login()>Finish</button>
+              </p>
+            </div>
+            <!--End of Step 4-->
+          </app-progress-step>
+        </app-progress>
+
+
+        <!-- End of Profile Forms-->
+
+
+      </div>
     </div>
+  </div>
 </div>
