@@ -20,6 +20,7 @@ import { MyCyclesComponent } from './pages/wallet/my-cycles/my-cycles.component'
 import { ProgressComponent } from './pages/welcome/progress/progress.component';
 import { ProgressStepComponent } from './pages/welcome/progress/progress-step/progress-step.component';
 import { ProgressStepDirective } from './pages/welcome/progress/progress-step.directive';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProgressStepDirective } from './pages/welcome/progress/progress-step.di
     MyCyclesComponent,
     ProgressComponent,
     ProgressStepComponent,
-    ProgressStepDirective
+    ProgressStepDirective,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

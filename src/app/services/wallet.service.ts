@@ -20,4 +20,12 @@ export class WalletService {
   getWallet() {
     return this.webReqService.get('wallet');
   }
+
+  getWalletDetails(walletId: string) {
+    return this.webReqService.get('wallet/'+walletId);
+  }
+
+  deleteWallet(walletId: string) {
+    return this.webReqService.delete(walletId)
+  }
 }

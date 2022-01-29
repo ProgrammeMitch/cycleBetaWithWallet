@@ -15,38 +15,25 @@
               monthly or weekly contribution.</p>
             <p>First things First. Lets get to know you</p>
             <form [formGroup]="userForm1" (ngSubmit)="updateUser(userForm1)">
-              <div class="form-box">
-                <div class="field">
-                  <p class="control">First Name:
-                    <input class="input is-small has-background-light is-small" placeholder="What is your First Name?"
-                      formControlName="firstName">
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control">Last Name
-                    <input class="input is-small has-background-light is-small" placeholder="What is your Last Name?"
-                      formControlName="lastName">
-                  </p>
-                </div>
-                <div class="field">
-                  <div>
-                    <p class="control">Marital Status</p>
-                    <div class="selected">
-                    <select formControlName="maritalStatus" style="width: 100%; height: 100%;">
-                      <option>Married</option>
-                      <option>Single</option>
-                    </select>
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control is-expanded"> First Name
+                      <input class="input" type="text" placeholder="What is your First Name?"
+                        formControlName="firstName">
+                    </p>
                   </div>
+                  <div class="field">
+                    <p class="control is-expanded"> Last Name
+                      <input class="input" type="text" placeholder="What is your Last Name?" formControlName="lastName">
+                    </p>
                   </div>
-                  <!--<p class="control">Marital Status
-                    <input class="input is-small has-background-light is-medium" placeholder="You don Marry?"
-                      formControlName="maritalStatus">
-                  </p>-->
                 </div>
               </div>
               <div class="field">
                 <p class="control">
-                  <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                  <button progressStepNext class="button is-success is-pulled-right" type="submit"
+                    [disabled]="userForm1.invalid">Next</button>
                 </p>
               </div>
             </form>
@@ -63,31 +50,33 @@
               <form [formGroup]="userForm2" (ngSubmit)="updateUser(userForm2)">
                 <div class="form-box">
                   <div class="field">
-                    <p class="control">Phone Number:
-                      <input class="input is-small has-background-light is-small" placeholder="Phone Number"
+                    <p class="control is-expanded">Phone Number:
+                      <input class="input" placeholder="Phone Number"
                         formControlName="phoneNumber">
-                        <span *ngIf="onlyNumbersPhone"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                      <span *ngIf="onlyNumbersPhone"><i style="color: red; font-size: smaller;">Invalid
+                          Number</i></span>
                     </p>
                   </div>
                   <div class="field">
-                    <p class="control">Bank Verification Number
-                      <input class="input is-small has-background-light is-small" placeholder="BVN"
+                    <p class="control is-expanded">Bank Verification Number
+                      <input class="input" placeholder="BVN"
                         formControlName="bvn">
-                        <span *ngIf="onlyNumbersBvn"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                      <span *ngIf="onlyNumbersBvn"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
                     </p>
                   </div>
                   <div class="field">
-                    <p class="control">National Identity Number
-                      <input class="input is-small has-background-light is-small" placeholder="NIN"
+                    <p class="control is-expanded">National Identity Number
+                      <input class="input" placeholder="NIN"
                         formControlName="nin">
-                        <span *ngIf="onlyNumbersNin"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                      <span *ngIf="onlyNumbersNin"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
                     </p>
                   </div>
                 </div>
                 <div class="field">
                   <p class="control">
                     <button progressStepPrev class="button is-danger is pulled left">Back</button>
-                    <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                    <button progressStepNext class="button is-success is-pulled-right" type="submit"
+                      [disabled]="userForm2.invalid">Next</button>
                   </p>
                 </div>
               </form>
@@ -100,43 +89,115 @@
               <p><b>GREAT!! </b>We only deal with the trustworthy</p>
               <p>How about you tell us more about yourself na...</p>
               <form [formGroup]="userForm3" (ngSubmit)="updateUser(userForm3)">
-                <div class="form-box">
+                <div class="field is-horizontal">
+                  <div class="field-body">
                   <div class="field">
                     <p class="control">Occupation:
-                      <input class="input is-small has-background-light is-small" placeholder="What do your do"
+                      <input class="input" placeholder="What do your do"
                         formControlName="occupation">
                     </p>
                   </div>
                   <div class="field">
                     <p class="control">Age
-                      <input class="input is-small has-background-light is-small" placeholder="How old are you?"
+                      <input class="input" placeholder="How old are you?"
                         formControlName="age">
-                        <span *ngIf="onlyNumbersAge"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                      <span *ngIf="onlyNumbersAge"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
+                  </div>
+                </div>
+                </div>
+
+
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control is-expanded has-icons-left">
+                        <input class="input" type="text" placeholder="Name">
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control is-expanded has-icons-left has-icons-right">
+                        <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field is-narrow">
+                      <div class="control">
+                        <p>Occupation</p>
+                        <div class="select is-fullwidth">
+                          <select>
+                            <option>Banker</option>
+                            <option>Civil Servant</option>
+                            <option>Sales</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field-body">
+                    <div class="field is-narrow">
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                          <select>
+                            <option>Business development</option>
+                            <option>Marketing</option>
+                            <option>Sales</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field-body">
+                    <div class="field is-narrow">
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                          <select formControlName="salary">
+                            <option>10,000 - 50,000</option>
+                            <option>50,000 - 100,000</option>
+                            <option>100,000 - 200,000</option>
+                            <option>200,000 - 500,000</option>
+                            <option>500,000 - 1,000,000</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">Occupation:
+                      <input class="input" placeholder="What do your do">
                     </p>
                   </div>
                   <div class="field">
-                    <!--<p class="control">Salary Range
-                      <input class="input is-small has-background-light is-small" placeholder="How much do you earn"
-                        formControlName="salary">
-                    </p>-->
-                    <div>
-                    <p class="control">Earning</p>
-                      <div class="selected">
-                      <select formControlName="salary" style="width: 100%; height: 100%;">
-                        <option>10,000 - 50,000</option>
-                        <option>50,000 - 100,000</option>
-                        <option>100,000 - 200,000</option>
-                        <option>200,000 - 500,000</option>
-                        <option>500,000 - 1,000,000</option>
-                      </select>
-                    </div>
-                  </div>
+                    <p class="control">Age
+                      <input class="input" placeholder="How old are you?">
+                      <span *ngIf="onlyNumbersAge"><i style="color: red; font-size: smaller;">Invalid Number</i></span>
+                    </p>
                   </div>
                 </div>
+
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <p>Address</p>
+                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="field">
                   <p class="control">
                     <button progressStepPrev class="button is-danger is pulled left">Back</button>
-                    <button progressStepNext class="button is-success is-pulled-right" type="submit" [disabled]="userForm1.invalid">Next</button>
+                    <button progressStepNext class="button is-success is-pulled-right" type="submit"
+                      [disabled]="userForm1.invalid">Next</button>
                   </p>
                 </div>
               </form>

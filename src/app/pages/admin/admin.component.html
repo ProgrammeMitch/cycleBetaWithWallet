@@ -1,0 +1,208 @@
+<div class="centered-content">
+    <div class="admin">
+        <div class="getButtons">
+            <button (click)="viewAllUsers()">View All Users</button>
+            <button (click)="getAllWallets()">View All Wallets</button>
+            <button (click)="getAllCycles()">View All Cycles</button>
+            <button (click)="fundWalletDisplay()">Fund Wallet</button>
+        </div>
+        <div class="path-container">
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <label for="">Get Path</label>
+                    <form [formGroup]="path" (ngSubmit)="getPath()">
+                        <div class="field">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <p class="control is-expanded has-icons-left">
+                                        <select placeholder="Enter Path" formControlName="pathName">
+                                            <option value="user">user</option>
+                                            <option value="cycle">cycle</option>
+                                            <option value="wallet">wallet</option>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <p class="control is-expanded ">
+                                    <input style="margin-top: 5px;" class="input is-success" placeHolder="Enter ID Here"
+                                        formControlName="id">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="button is-success is-pulled-right" type="submit">Find</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="path-container" *ngIf="fundWalletTrigger">
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <label for="">Get Path</label>
+                    <form [formGroup]="fundWallet" (ngSubmit)="fundWallets()">
+                        <div class="field">
+                            <div class="control">
+                                <p class="control is-expanded ">
+                                    <input placeholder="Enter Path" formControlName="walletId">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <p class="control is-expanded ">
+                                    <input style="margin-top: 5px;" class="input" placeHolder="Enter Amount Here"
+                                        formControlName="amount">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="button is-success is-pulled-right" type="submit">Find</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="viewAllUser">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>sn</th>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>BVN</th>
+                        <th>NIN</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of users; ; index as i">
+                    <tr>
+                        <th>{{ i + 1 }}</th>
+                        <th>{{ user._id }}</th>
+                        <th>{{ user.firstName }}</th>
+                        <th>{{ user.lastName }}</th>
+                        <th>{{ user.phoneNumber }}</th>
+                        <th>{{ user.bvn }}</th>
+                        <th>{{ user.nin }}</th>
+                        <button (click)="deleteUser( user._id )">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="viewAllWallet">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Wallet Owner</th>
+                        <th>Wallet Amount</th>
+                        <th>Wallet Cycles</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of userWallets">
+                    <tr>
+                        <th>{{ user._id }}</th>
+                        <th>{{ user.walletId }}</th>
+                        <th>{{ user.walletAmount }}</th>
+                        <th>{{ user.cycle }}</th>
+                        <button (click)="deleteWallet( user._id )">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="viewAllCycle">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cycle Amount</th>
+                        <th>Cycle Duration</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let cycle of cycles">
+                    <tr>
+                        <th>{{ cycle._id }}</th>
+                        <th>{{ cycle.cycleAmount }}</th>
+                        <th>{{ cycle.cycleDuration }}</th>
+                        <button (click)="deleteCycle( cycle._id )">Delete</button>
+                        <button (click)="getWalletsInCycle(cycle._id)">View Wallets</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="viewWalletsInCycle">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Wallet Worth</th>
+                        <th>Wallet Owner</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let wallet of cycleWallets">
+                    <tr>
+                        <th>{{ wallet._id }}</th>
+                        <th>{{ wallet.walletAmount }}</th>
+                        <th>{{ wallet.walletId }}</th>
+                        <button (click)="getWalletsInCycle(wallet._id)">View Wallets</button>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="pathfinder">
+            <table class="table is-bordered">
+                <thead>
+                    <tr>
+                        <th>sn</th>
+                        <th>ID</th>
+                        <th>Wallet Worth</th>
+                        <th>Wallet Owner</th>
+                        <th>Wallet Cycles</th>
+                        <th>Age</th>
+                        <th>BVN</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>username</th>
+                        <th>Cycle Worth</th>
+                        <th>Cycle Duration</th>
+                        <th>Cycle Start Date</th>
+                        <th>Cycle frequency</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let path of pathInfo; index as i">
+                    <tr>
+                        <th>{{ i + 1 }}</th>
+                        <th>{{ path._id }}</th>
+                        <th>{{ path.walletAmount }}</th>
+                        <th>{{ path.walletId }}</th>
+                        <th>{{ path.cycle }}</th>
+                        <th>{{ path.age }}</th>
+                        <th>{{ path.bvn }}</th>
+                        <th>{{ path.firstName }}</th>
+                        <th>{{ path.lastName }}</th>
+                        <th>{{ path.phoneNumber }}</th>
+                        <th>{{ path.username }}</th>
+                        <th>{{ path.cycleAmount }}</th>
+                        <th>{{ path.cycleDuration }}</th>
+                        <th>{{ path.cycleStartDate }}</th>
+                        <th>{{ path.frequency }}</th>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

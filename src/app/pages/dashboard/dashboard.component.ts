@@ -20,15 +20,16 @@ export class DashboardComponent implements OnInit {
   walletPresent: boolean;
   locked = true;
 
-  constructor(private walletService: WalletService, private profileService: ProfileService, private route: ActivatedRoute, private authServive: AuthService) { }
+  constructor(private walletService: WalletService, private authService: AuthService, private profileService: ProfileService, private route: ActivatedRoute, private authServive: AuthService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.profileService.getUserDetails(this.authServive.getUserId()).subscribe((user: Profile) => {
         console.log(user)
         this.profile = user;
-        if (this.walletPresent === undefined) {
+        if (user[0].wallet === undefined) {
           this.walletPresent = true
+          console.log(user[0].wallet)
         }
       })
     })
@@ -37,17 +38,32 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  
   createWallet(str: string) {
     if (Array.isArray(this.wallet) && this.wallet.length) {
       if (this.wallet[0].walletId === str) {
-        console.log('walletExists')
+        this.walletService.getWallet().subscribe((wallet: Wallet) => {
+          this.profileService.updateUserDetails(this.authService.getUserId(), { wallet : wallet}).subscribe(() => {
+            console.log(wallet);
+          })
+        })
+        //console.log('walletExists')
       } else {
         this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
-          console.log(wallet);
+          this.walletService.getWallet().subscribe((wallet: Wallet) => {
+            this.profileService.updateUserDetails(this.authService.getUserId(), { wallet : wallet}).subscribe(() => {
+              console.log(wallet);
+            })
+          })
         })
       }
     } else {
       this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
+        this.walletService.getWallet().subscribe((wallet: Wallet) => {
+          this.profileService.updateUserDetails(this.authService.getUserId(), { wallet : wallet}).subscribe(() => {
+            console.log(wallet);
+          })
+        })
       })
     }
   }

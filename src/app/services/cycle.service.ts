@@ -27,4 +27,8 @@ export class CycleService {
     //get all details (wallets) within each cycle
     return this.webReqService.get(`cycles/${cycleId}`)
   }
+
+  deleteCycle(cycleId: string) {
+    return this.webReqService.delete(cycleId)
+  }
 }

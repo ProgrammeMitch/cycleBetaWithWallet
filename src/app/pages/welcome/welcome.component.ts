@@ -25,8 +25,7 @@ export class WelcomeComponent implements OnInit {
 
     this.userForm1 = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      maritalStatus: ['', Validators.required]
+      lastName: ['', Validators.required]
     })
 
     this.userForm2 = this.fb.group({

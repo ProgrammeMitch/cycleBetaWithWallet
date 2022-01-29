@@ -32,9 +32,11 @@
     display: flex;
     background: white;
     padding: 20px 20px;
-    height: 90%;
+    height: 100%;
     width: 100%;
     justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     p {
         margin-top: 10px;

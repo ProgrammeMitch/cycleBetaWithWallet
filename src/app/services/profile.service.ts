@@ -13,7 +13,15 @@ export class ProfileService {
     return this.webReqService.get(`users/${userId}`);
   }
 
+  getAllUsers() {
+    return this.webReqService.get(`users`);
+  }
+
   updateUserDetails(userId: string, update: Object) {
     return this.webReqService.patch(`users/${userId}`, update);
+  }
+
+  deleteWallet(userId: string) {
+    return this.webReqService.delete(userId)
   }
 }

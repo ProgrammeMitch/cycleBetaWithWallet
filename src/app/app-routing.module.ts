@@ -9,6 +9,7 @@ import { FundWalletComponent } from './pages/wallet/fund-wallet/fund-wallet.comp
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { MyCyclesComponent }from './pages/wallet/my-cycles/my-cycles.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'new-cycle', component: NewCycleComponent},
   { path: 'welcome', component: WelcomeComponent},  
   { path: 'wallet/:id', component: FundWalletComponent},
-  { path: 'wallet/:id/my-cycles', component: MyCyclesComponent}
+  { path: 'wallet/:id/my-cycles', component: MyCyclesComponent},
+  { path: 'adminprivateaccess', component: AdminComponent}
 ];
 
 @NgModule({
