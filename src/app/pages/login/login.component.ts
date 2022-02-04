@@ -31,8 +31,11 @@ export class LoginComponent implements OnInit {
         this.badRequestError = false;
         this.router.navigate(['/dashboard'])
       }
+    }, (catchError: Error) => {
+      this.badRequestError = true
+      this.loginForm.reset();
+      console.log('Incorrect Password')
     })
-    if (this.badRequestError) { this.badRequestError = true;}
-    this.loginForm.reset();
+
   }
 }

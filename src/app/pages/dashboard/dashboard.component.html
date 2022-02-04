@@ -1,7 +1,7 @@
 <div class="centered-content">
     <div class="container">
         <div class="profile has-background-light" *ngFor="let profiles of profile">
-            <h1 class="title has-text-primary">WELCOME BACK</h1>
+            <h1 class="title has-text-primary">WELCOME BACK {{ profiles.firstName }}</h1>
             <div class="headers">
                 <div class="title has-text-secondary">{{ profiles.username }} </div>
             </div>
@@ -13,15 +13,29 @@
                         WALLET
                     </a>
                 </div>
-                <div class="profile-tags title has-text-primary">
-                    <a [routerLink]="['/cycle']">
-                        CYCLES
-                    </a>
-                </div>
-                <div class="profile-tags title has-text-primary">
+                <div class="profile-tags title has-text-primary" *ngIf="!locked">
                     <div class="flex-column">
-                        <p [disabled]="locked">MESSAGES</p> <br>
-                        <span style="font-size: 10px; color: red;" *ngIf="locked">(Unavailable)</span>
+                        <a [routerLink]="['/cycle']">
+                            CYCLES
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-tags title has-text-primary" *ngIf="locked" style="cursor: not-allowed;">
+                    <div class="flex-column">
+                        <a style="color: red; cursor: not-allowed;">
+                            CYCLES
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-tags title has-text-primary" *ngIf="!locked">
+                    <div class="flex-column">
+                        <p>MESSAGES</p> <br>
+
+                    </div>
+                </div>
+                <div class="profile-tags title has-text-primary" *ngIf="locked" style="cursor: not-allowed;">
+                    <div class="flex-column">
+                        <p style="color: red;">MESSAGES</p>
                     </div>
                 </div>
                 <div class="profile-tags title has-text-primary" [disabled]="locked">INVEST</div>

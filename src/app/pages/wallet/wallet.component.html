@@ -13,7 +13,30 @@
                 <div class="profile-tags title has-text-primary" [routerLink]="[wallets._id]">FUND WALLET</div>
                 <div class="profile-tags title has-text-primary">WITHDRAWAL</div>
                 <div class="profile-tags title has-text-primary" (click)="navigate()">MY CYCLES</div>
+                <div class="transactions">
+                    <table class="table is-bordered">
+                        <thead style="width: fit-content;">
+                            <tr>
+                                <th>sn</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                                <th>Holder</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let transaction of transactions; ; index as i">
+                            <tr>
+                                <th>{{ i + 1 }}</th>
+                                <th>{{ transaction.depositAmount }}</th>
+                                <th>{{ transaction.action }}</th>
+                                <th>{{ transaction.holder }}</th>
+                                <th>{{ transaction.newBalance }}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

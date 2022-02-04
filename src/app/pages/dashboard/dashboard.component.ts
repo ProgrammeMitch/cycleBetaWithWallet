@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   newAccountBalance = 1;
   wallet: Wallet;
   walletPresent: boolean;
-  locked = true;
+  locked: boolean;
 
   constructor(private walletService: WalletService, private authService: AuthService, private profileService: ProfileService, private route: ActivatedRoute, private authServive: AuthService) { }
 
@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
         console.log(user)
         this.profile = user;
         if (user[0].wallet === undefined) {
-          this.walletPresent = true
-          console.log(user[0].wallet)
+          this.locked = true
+          console.log(this.locked)
         }
       })
     })

@@ -1,44 +1,40 @@
 <div class="centered-content">
-    <form [formGroup]="fundWallet" (ngSubmit)="fundWallets()">
+  <form [formGroup]="fundWallet" (ngSubmit)="fundWallets()">
     <div class="modal-box">
-        <h1 class="title">Fund Your Wallet</h1>
-        <!--<div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Your Unique ID" formControlName="cycleId">
-            </p>
-          </div>-->
-          <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Amount" formControlName="walletAmount">
-            </p>
+      <h1 class="title" style="text-align: center;">Fund Your Wallet</h1>
+      <p style="padding: 5px;">All deposits would remain pending until confirmed</p>
+      <div class="field">
+        <p class="control">
+          <input class="input is-small has-background-light is-medium" placeholder="How much are we contributing today?"
+            formControlName="walletAmount">
+        </p>
+      </div>
+      <div class="field" style="width: 100%; padding: 20px;">
+        <div *ngIf="onlyNumbers" style="color: red;">
+          <p>Only Numbers</p>
+          <p class="control">
+            <button class="button is-danger is-pulled-left" routerLink="/wallet">Back</button>
+            <button class="button is-success is-pulled-right" type="submit">
+              Approve
+            </button>
+          </p></div>
+        <div *ngIf="!onlyNumbers">
+          <div class="accountInfo" *ngIf="touched">
+            <p>We are only accepting transfers at this time</p>
+            <p><b>Bank</b>: Zenith Bank Plc</p>
+            <p><b>Account Name</b>: Zenith Bank Plc</p>
+            <p><b>Account Number</b>: 1015209474</p>
           </div>
-          <!--<div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Duration" formControlName="cycleDuration">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Start Date" formControlName="cycleStartDate">
-            </p>
-          </div>
+          <p class="control">
+            <button class="button is-danger is-pulled-left" routerLink="/wallet">Back</button>
+            <button class="button is-success is-pulled-right" type="submit">
+              Approve
+            </button>
+          </p>
+        </div>
 
-          <div class="field">
-            <p class="control">
-              <input class="input is-small has-background-light is-medium" placeholder="Maximum Number" formControlName="maximumCycleNum">
-            </p>
-          </div>-->
-          <div class="field">
-            <p class="control">
-              <button class="button is-success" type="submit">
-                Approve
-              </button>
-              <button class="button is-danger" routerLink="/">Back</button>
-
-            </p>
-          </div>
+      </div>
 
     </div>
-</form>
+  </form>
 </div>
-

@@ -12,7 +12,6 @@ import { WalletService } from 'src/app/services/wallet.service';
 export class FundWalletComponent implements OnInit {
 
   wallet: Wallet;
-  updateBy = 10;
   fundWallet: FormGroup
 
   constructor(private walletService: WalletService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
@@ -27,12 +26,39 @@ export class FundWalletComponent implements OnInit {
   }
 
   fundWallets() {
-    this.walletService.updateWallet(this.wallet[0]._id, this.fundWallet.value).subscribe(() => {
-      this.wallet[0].walletAmount = this.fundWallet.value;
-      console.log("funds have been added")
-      console.log(this.wallet)
-      this.router.navigate(['wallet'])
+    this.walletService.getWallet().subscribe((wallet) => {
+      let walletAmount = Number(wallet[0].walletAmount) + Number(this.fundWallet.value.walletAmount)
+      console.log(walletAmount)
+      this.walletService.updateWallet(this.wallet[0]._id, { walletAmount: walletAmount }).subscribe(() => {
+        this.walletService.updateWallet(this.wallet[0]._id + '/transactions', {
+          transactions: {
+            depositAmount: Number(this.fundWallet.value.walletAmount),
+            action: 'CREDIT',
+            holder: 'WALLET',
+            newBalance: walletAmount
+          }
+        }).subscribe(() => {
+          this.wallet[0].walletAmount = walletAmount;
+          console.log("funds have been added")
+          this.router.navigate(['wallet'])
+        })
+
+      })
     })
   }
 
+  get touched() {
+    if (this.fundWallet.value.walletAmount) {
+      return true
+    }
+  }
+
+  get onlyNumbers() {
+    if (this.fundWallet.value.walletAmount) {
+      let zero = this.fundWallet.value.walletAmount * 0
+      if (zero !== 0) {
+        return true
+      }
+    }
+  }
 }

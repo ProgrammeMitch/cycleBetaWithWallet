@@ -36,6 +36,7 @@
     height: 100%;
     width: 100%;
     flex-flow: wrap;
+    overflow-x: auto;
 
     
     .profile-tags {
@@ -47,7 +48,7 @@
         margin: 5px;
         background: $deep-yellow;
         width: 30%;
-        height: 55%;
+        height: 35%;
         flex-grow: 1;
         font-size: 30px;
 
@@ -56,5 +57,11 @@
             transition: ease-in-out 0.2s;
             cursor: pointer;
         }
+    }
+
+    .transactions {
+        width: 100%;
+        justify-content: center;
+        border: 1px solid red;
     }
 }

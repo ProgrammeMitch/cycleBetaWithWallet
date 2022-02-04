@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Cycle } from 'src/app/models/cycle.model';
 import { Wallet } from 'src/app/models/wallet.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
 import { WalletService } from 'src/app/services/wallet.service';
 
@@ -23,7 +24,7 @@ export class CycleComponent implements OnInit {
   cycleId: string;
   alreadyJoined: boolean;
 
-  constructor(private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private authService: AuthService, private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -37,6 +38,12 @@ export class CycleComponent implements OnInit {
     this.cycleService.getCycles().subscribe((cycles: Cycle) => {
       this.cycles = cycles;
     })
+  }
+
+  logout() {
+    this.authService.logout()
+    this.router.navigate(['login'])
+
   }
 
   getDetails(str: string) {
@@ -69,6 +76,7 @@ export class CycleComponent implements OnInit {
     })
   }
 
+  
   joinCycle() {
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
       console.log(wallet[0]._id)
