@@ -5,59 +5,59 @@ import { Wallet } from 'src/app/models/wallet.model';
 import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
-  selector: 'app-fund-wallet',
-  templateUrl: './fund-wallet.component.html',
-  styleUrls: ['./fund-wallet.component.scss']
+  selector: 'app-withdraw',
+  templateUrl: './withdraw.component.html',
+  styleUrls: ['./withdraw.component.scss']
 })
-export class FundWalletComponent implements OnInit {
+export class WithdrawComponent implements OnInit {
 
+  withdraw: FormGroup;
   wallet: Wallet;
-  fundWallet: FormGroup
 
   constructor(private walletService: WalletService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.fundWallet = this.fb.group({
-      walletAmount: ['', Validators.required]
+    this.withdraw = this.fb.group({
+      withdrawAmount: ['', Validators.required]
     })
     this.walletService.getWallet().subscribe((wallet: Wallet) => {
       this.wallet = wallet;
     })
   }
 
-  fundWallets() {
+  withdrawer() {
+    console.log(this.withdraw.value.withdrawAmount)
     this.walletService.getWallet().subscribe((wallet) => {
-      let walletAmount = Number(wallet[0].walletAmount) + Number(this.fundWallet.value.walletAmount)
-      console.log(walletAmount)
+      let walletAmount = Number(wallet[0].walletAmount) - Number(this.withdraw.value.withdrawAmount)
       this.walletService.updateWallet(this.wallet[0]._id, { walletAmount: walletAmount }).subscribe(() => {
         this.walletService.updateWallet(this.wallet[0]._id + '/transactions', {
           transactions: {
-            transactionId: Math.random() * 1000 + 'crd',
+            transactionId: Math.random() * 100 + 'dbt',
             date: new Date(),
-            depositAmount: Number(this.fundWallet.value.walletAmount),
-            action: 'CREDIT',
+            depositAmount: Number(this.withdraw.value.withdrawAmount),
+            action: 'DEBIT',
             holder: 'WALLET',
             newBalance: walletAmount
           }
         }).subscribe(() => {
           this.wallet[0].walletAmount = walletAmount;
-          console.log("funds have been added")
+          console.log("withdrawal succesful")
           this.router.navigate(['wallet'])
         })
-
       })
     })
+
   }
 
   get touched() {
-    if (this.fundWallet.value.walletAmount) {
+    if (this.withdraw.value.withdrawAmount) {
       return true
     }
   }
 
   get onlyNumbers() {
-    if (this.fundWallet.value.walletAmount) {
-      let zero = this.fundWallet.value.walletAmount * 0
+    if (this.withdraw.value.withdrawAmount) {
+      let zero = this.withdraw.value.withdrawAmount * 0
       if (zero !== 0) {
         return true
       }
@@ -65,10 +65,14 @@ export class FundWalletComponent implements OnInit {
   }
 
   get disableApproval() {
-    if (Number(this.fundWallet.value.walletAmount == 0)) {
+    if (Number(this.withdraw.value.withdrawAmount == 0)) {
+      return true
+    } else if ((Number(this.wallet[0].walletAmount) - Number(this.withdraw.value.withdrawAmount) < 0)) {
       return true
     } else {
       return false
     }
   }
+
+  
 }

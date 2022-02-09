@@ -1,0 +1,22 @@
+<div class="centered-content">
+  <form [formGroup]="withdraw" (ngSubmit)="withdrawer()">
+    <div class="modal-box">
+      <h1 class="title" style="text-align: center;">Request Funds</h1>
+      <p style="padding: 5px;">All withdrawals would be completed in 1 hr</p>
+      <div class="field">
+        <p class="control">
+          <input class="input is-small has-background-light is-medium" placeholder="ITS YOUR MONEY!!"
+            formControlName="withdrawAmount">
+        </p>
+      </div>
+      <div class="field" style="width: 100%; padding: 20px;" *ngIf="disableApproval">
+        <button class="button is-danger is-pulled-left" routerLink="/wallet">Back</button>
+        <button class="button is-danger is-pulled-right" style="cursor: not-allowed;">Approve</button>
+      </div>
+      <div class="field" style="width: 100%; padding: 20px;" *ngIf="!disableApproval">
+          <button class="button is-danger is-pulled-left" routerLink="/wallet">Back</button>
+          <button class="button is-success is-pulled-right" type="submit" (disable)="disableApproval">Approve</button>
+      </div>
+    </div>
+  </form>
+</div>

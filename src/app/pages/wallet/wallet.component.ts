@@ -21,11 +21,14 @@ export class WalletComponent implements OnInit {
       this.wallet = wallet;
       this.transactions = wallet[0].transactions
       console.log(this.transactions)
-      
     })
   }
 
   navigate() {
     this.router.navigate(['wallet', this.wallet[0]._id, 'my-cycles'])
+  }
+
+  navigateWithdraw() {
+    this.router.navigate(['wallet', this.wallet[0]._id, 'withdraw'])
   }
 }

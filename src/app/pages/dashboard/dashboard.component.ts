@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
         })
         //console.log('walletExists')
       } else {
-        this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
+        this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null, transactions: null }).subscribe((wallet: Wallet) => {
           this.walletService.getWallet().subscribe((wallet: Wallet) => {
             this.profileService.updateUserDetails(this.authService.getUserId(), { wallet : wallet}).subscribe(() => {
               console.log(wallet);
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
         })
       }
     } else {
-      this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null }).subscribe((wallet: Wallet) => {
+      this.walletService.createWallet({ walletId: str, walletAmount: this.newAccountBalance, cycle: null, transactions: null }).subscribe((wallet: Wallet) => {
         this.walletService.getWallet().subscribe((wallet: Wallet) => {
           this.profileService.updateUserDetails(this.authService.getUserId(), { wallet : wallet}).subscribe(() => {
             console.log(wallet);

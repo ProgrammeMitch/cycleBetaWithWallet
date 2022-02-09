@@ -9,7 +9,7 @@
             formControlName="walletAmount">
         </p>
       </div>
-      <div class="field" style="width: 100%; padding: 20px;">
+      <div class="field" style="width: 100%; padding: 20px;" *ngIf="!disableApproval">
         <div *ngIf="onlyNumbers" style="color: red;">
           <p>Only Numbers</p>
           <p class="control">
@@ -17,7 +17,8 @@
             <button class="button is-success is-pulled-right" type="submit">
               Approve
             </button>
-          </p></div>
+          </p>
+        </div>
         <div *ngIf="!onlyNumbers">
           <div class="accountInfo" *ngIf="touched">
             <p>We are only accepting transfers at this time</p>
@@ -32,7 +33,16 @@
             </button>
           </p>
         </div>
+      </div>
 
+      <div class="field" style="width: 100%; padding: 20px;" *ngIf="disableApproval">
+
+          <p class="control">
+            <button class="button is-danger is-pulled-left" routerLink="/wallet">Back</button>
+            <button class="button is-danger is-pulled-right" style="cursor: not-allowed;">
+              Approve
+            </button>
+          </p>
       </div>
 
     </div>

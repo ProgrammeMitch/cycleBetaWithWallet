@@ -10,6 +10,7 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { MyCyclesComponent }from './pages/wallet/my-cycles/my-cycles.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { WithdrawComponent } from './pages/wallet/withdraw/withdraw.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'new-cycle', component: NewCycleComponent},
   { path: 'welcome', component: WelcomeComponent},  
   { path: 'wallet/:id', component: FundWalletComponent},
+  { path: 'wallet/:id/withdraw', component: WithdrawComponent },
   { path: 'wallet/:id/my-cycles', component: MyCyclesComponent},
   { path: 'adminprivateaccess', component: AdminComponent}
 ];
