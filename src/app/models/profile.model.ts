@@ -10,5 +10,6 @@ export interface Profile {
     address: string,
     nin: string,
     wallet: Object,
-    messages: Array<string>
+    messages: Array<string>,
+    pendingTransfer: Boolean
 }

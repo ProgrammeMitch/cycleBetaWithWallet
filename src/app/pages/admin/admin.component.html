@@ -49,7 +49,14 @@
                         <div class="field">
                             <div class="control">
                                 <p class="control is-expanded ">
-                                    <input placeholder="Enter Path" formControlName="walletId">
+                                    <input placeholder="Enter walletId" formControlName="walletId">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <p class="control is-expanded ">
+                                    <input placeholder="Enter UserId" formControlName="userId">
                                 </p>
                             </div>
                         </div>
@@ -81,6 +88,7 @@
                         <th>Phone Number</th>
                         <th>BVN</th>
                         <th>NIN</th>
+                        <th>Pending</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let user of users; ; index as i">
@@ -92,6 +100,7 @@
                         <th>{{ user.phoneNumber }}</th>
                         <th>{{ user.bvn }}</th>
                         <th>{{ user.nin }}</th>
+                        <th>{{ user.pendingTransfer }}</th>
                         <button (click)="deleteUser( user._id )">Delete</button>
                     </tr>
                 </tbody>
@@ -114,10 +123,37 @@
                         <th>{{ user.walletId }}</th>
                         <th>{{ user.walletAmount }}</th>
                         <th>{{ user.cycle }}</th>
+                        <button (click)="viewTransactions( user._id )" >View Transactions</button>
                         <button (click)="deleteWallet( user._id )">Delete</button>
                     </tr>
                 </tbody>
             </table>
+
+            <table *ngIf="viewTransactionTrigger" class="table is-bordered is-fullwidth">
+                <thead style="width: fit-content;">
+                    <tr>
+                        <th>sn</th>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                        <th>Holder</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let transaction of transactions; ; index as i">
+                    <tr>
+                        <th>{{ i + 1 }}</th>
+                        <th>{{ transaction.transactionId }}</th>
+                        <th>{{ transaction.date }}</th>
+                        <th>{{ transaction.depositAmount }}</th>
+                        <th>{{ transaction.action }}</th>
+                        <th>{{ transaction.holder }}</th>
+                        <th>{{ transaction.newBalance }}</th>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
 
         <div *ngIf="viewAllCycle">
@@ -155,7 +191,6 @@
                         <th>{{ wallet._id }}</th>
                         <th>{{ wallet.walletAmount }}</th>
                         <th>{{ wallet.walletId }}</th>
-                        <button (click)="getWalletsInCycle(wallet._id)">View Wallets</button>
                     </tr>
                 </tbody>
             </table>

@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
   signup() {
     //console.log(this.signupForm.value.password == this.signupForm.value.password2)
     this.profileForm = this.signupForm.value;
-    this.authService.signup(this.profileForm.username, this.profileForm.password).subscribe((res: HttpResponse<any>) => {
+    this.authService.signup(this.profileForm.username.toUpperCase(), this.profileForm.password).subscribe((res: HttpResponse<any>) => {
       if (res.status === 200) {
         this.badRequestError = false
         this.router.navigate(['/welcome'])

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Profile } from 'src/app/models/profile.model';
 import { Wallet } from 'src/app/models/wallet.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
@@ -13,8 +16,16 @@ export class WithdrawComponent implements OnInit {
 
   withdraw: FormGroup;
   wallet: Wallet;
+  profile: Profile;
 
-  constructor(private walletService: WalletService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private profileService: ProfileService, 
+    private authService: AuthService, 
+    private walletService: WalletService, 
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.withdraw = this.fb.group({
@@ -40,9 +51,14 @@ export class WithdrawComponent implements OnInit {
             newBalance: walletAmount
           }
         }).subscribe(() => {
-          this.wallet[0].walletAmount = walletAmount;
-          console.log("withdrawal succesful")
-          this.router.navigate(['wallet'])
+          this.profileService.getUserDetails(this.authService.getUserId()).subscribe((profile: Profile) => {
+            this.profileService.updateUserDetails(this.authService.getUserId(), { pendingTransfer: true }).subscribe(() => {
+              this.profile = profile;
+              this.wallet[0].walletAmount = walletAmount;
+              console.log("withdrawal succesful")
+              this.router.navigate(['wallet'])
+            })
+          })
         })
       })
     })

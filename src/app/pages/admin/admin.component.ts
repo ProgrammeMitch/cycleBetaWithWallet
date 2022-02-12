@@ -22,10 +22,12 @@ export class AdminComponent implements OnInit {
   lengthOfUserObject = 0
 
   wallet: Wallet;
+  transactions: [];
+  viewTransactionTrigger: boolean;
 
   cycles: Cycle;
   lengthOfCycleObject = 0
-  cycleWallets: Wallet;
+  cycleWallets: any;
 
   viewAllUser: boolean;
   viewAllCycle: boolean;
@@ -48,6 +50,7 @@ export class AdminComponent implements OnInit {
     })
 
     this.fundWallet = this.fb.group({
+      userId: [''],
       walletId: [''],
       amount: ['']
     })
@@ -120,35 +123,56 @@ export class AdminComponent implements OnInit {
   }
 
   deleteCycle(str: string) {
-    let cycleInfo = []
-    for (let i = 0; i < this.userWallets.length; i++) {
-      cycleInfo.push(this.userWallets[i].cycle)
-      console.log(cycleInfo[i])
-    }
 
-    for (let i = 0; i < cycleInfo.length; i++) {
-      for (let j = 0; j < cycleInfo[i].length; j++) {
-        if (str == cycleInfo[i][j]) {
-          cycleInfo[i].splice(i, 1)
-          console.log(this.userWallets[i]._id)
-          this.walletService.updateWallet(this.userWallets[i]._id + '/remove-cycle', { cycle: cycleInfo[i] }).subscribe((wallet) => {
-            console.log(wallet)
-          })
-        }
+    this.cycleService.getCycleDetails(str).subscribe((cycle: Cycle) => {
+      let wallets = cycle[0].wallet;
+      for (let i = 0; i < wallets.length; i++) {
+        this.walletService.getWalletDetails(wallets[i]._id).subscribe((wallet: Wallet) => {
+          let cyclesInWallet = wallet[0].cycle
+          for (let j = 0; j < cyclesInWallet.length; j++) {
+            if (str == cyclesInWallet[j]) {
+              cyclesInWallet.splice(j, 1)
+              console.log(cyclesInWallet)
+              this.walletService.updateWallet(wallets[i]._id + '/remove-cycle', {cycle: cyclesInWallet}).subscribe(() => {
+                console.log('cycle in wallet have been deleted')
+              })
+            }
+          }
+        })
       }
-      this.profileService.deleteWallet('cycles/' + str).subscribe(() => {
+    })
+    this.profileService.deleteWallet('cycles/' + str).subscribe(() => {
+      alert('cycle has been deleted')
+    })
 
-      })
-    }
   }
 
   getWalletsInCycle(str: string) {
     this.viewWalletsInCycle = true;
     console.log(str)
     this.cycleService.getCycleDetails(str).subscribe((cycleDetails: Cycle) => {
-      this.cycleWallets = cycleDetails[0].wallet
-      console.log(this.cycleWallets)
+      this.cycleWallets = cycleDetails[0].wallet;
+      let cycleWalletLength = cycleDetails[0].wallet.length
+      let cycleWallet = [];
+      for (let i = 0; i < cycleWalletLength; i++) {
+        if (this.cycleWallets[i] == null) {
+
+        } else {
+          cycleWallet.push(this.cycleWallets[i])
+        }
+      }
+      this.cycleWallets = cycleWallet
     })
+  }
+
+  viewTransactions(str: string) {
+    this.viewTransactionTrigger = true
+    for (let i = 0; i < this.userWallets.length; i++) {
+      if (this.userWallets[i]._id == str) {
+        this.transactions = this.userWallets[i].transactions
+      }
+    }
+
   }
 
   getPath() {
@@ -159,7 +183,7 @@ export class AdminComponent implements OnInit {
     this.viewWalletsInCycle = false;
     this.fundWalletTrigger = false;
     if (this.path.value.pathName === 'user') {
-      
+
       this.profileService.getUserDetails(this.path.value.id).subscribe((user: Profile) => {
         this.pathInfo = user
         console.log(user)
@@ -182,8 +206,13 @@ export class AdminComponent implements OnInit {
   }
 
   fundWallets() {
-    this.walletService.updateWallet(this.fundWallet.value.walletId, {walletAmount: this.fundWallet.value.amount}).subscribe((wallet) => {
-      console.log(wallet)
+    console.log(this.fundWallet)
+    this.walletService.updateWallet(this.fundWallet.value.walletId, { walletAmount: this.fundWallet.value.amount }).subscribe((wallet) => {
+      this.profileService.updateUserDetails(this.fundWallet.value.userId, { pendingTransfer: false }).subscribe(() => {
+        alert('Funds have been updated')
+        console.log(wallet)
+      })
+
     })
   }
 }

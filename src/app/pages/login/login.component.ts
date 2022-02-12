@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.profileForm = this.loginForm.value;
-    this.authService.login(this.profileForm.username, this.profileForm.password).subscribe((res: HttpResponse<any>) => {
+    this.authService.login(this.profileForm.username.toUpperCase(), this.profileForm.password).subscribe((res: HttpResponse<any>) => {
       if (res.status === 200) {
         this.badRequestError = false;
         this.router.navigate(['/dashboard'])

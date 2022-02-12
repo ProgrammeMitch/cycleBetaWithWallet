@@ -6,7 +6,8 @@
                 <div class="title has-text-secondary">WALLET ID: {{ wallets.walletId }} </div>
             </div>
             <div class="headers">
-                <div class="title has-text-secondary">BALANCE: NGN{{ wallets.walletAmount }} </div>
+                <div class="title has-text-secondary">BALANCE: NGN{{ wallets.walletAmount }} 
+                    <span *ngIf="pendingTransactionExists" style="color: red;"><i>Pending</i></span>  </div>
             </div>
             <!-- Profile Display-->
             <div class="profile-content">
