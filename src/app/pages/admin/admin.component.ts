@@ -127,6 +127,9 @@ export class AdminComponent implements OnInit {
     this.cycleService.getCycleDetails(str).subscribe((cycle: Cycle) => {
       let wallets = cycle[0].wallet;
       for (let i = 0; i < wallets.length; i++) {
+        if (wallets[i] == null) {
+          continue
+        }
         this.walletService.getWalletDetails(wallets[i]._id).subscribe((wallet: Wallet) => {
           let cyclesInWallet = wallet[0].cycle
           for (let j = 0; j < cyclesInWallet.length; j++) {
@@ -142,7 +145,7 @@ export class AdminComponent implements OnInit {
       }
     })
     this.profileService.deleteWallet('cycles/' + str).subscribe(() => {
-      alert('cycle has been deleted')
+      console.log('cycle has been deleted')
     })
 
   }

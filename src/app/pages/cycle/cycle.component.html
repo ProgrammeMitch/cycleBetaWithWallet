@@ -8,26 +8,22 @@
                 </a>
             </div>
 
-            <button class="button is-primary has-text-white" routerLink="/new-cycle">Create Cycle</button>
+            <button class="button is-danger has-text-white" style="cursor: not-allowed;">Create Cycle</button>
         </div>
         <div class="profile has-background-light">
             <div class="top-bar">
-                <div class="dropdown is-pulled-left">
-                <h1 class="title has-text-primary">CYCLE DETAILS</h1>
+                <div class="">
+                    <h1 class="title has-text-primary">CYCLE DETAILS</h1>
                 </div>
-                <div class="dropdown is-pulled-right">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                            <span>ok</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-cog" aria-hidden="true"></i>
-                            </span>
-                        </button>
+                <div class="navigation">
+                    <div class="todashboard">
+                        <a (click)="todashboard()">
+                            Dashboard
+                        </a>
                     </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                    <div class="dropdown-content">
-                        <a (click)="logout()" class="dropdown-item">
+                    |
+                    <div class="logout">
+                        <a (click)="logout()">
                             Logout
                         </a>
                     </div>
@@ -40,7 +36,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-48x48">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                    <img alt="Placeholder image">
                                 </figure>
                             </div>
                             <div class="media-content">
@@ -51,18 +47,50 @@
                     </div>
                 </div>
             </div>
-            <div class="details">
-                <p *ngIf="alreadyJoined">You has already joined this circle</p>
-                <h3 class="has-text-secondary" *ngIf="lengthOfWallet">{{ lengthOfWallets }} wallets have already signed
-                    up.
-                </h3>
-
-                <p class="control" type="submit" *ngIf="check">
-                    <button (click)="joinCycle()" class="button is-primary has-text-white">
-                        Join
-                    </button>
-                </p>
+            <div class="top-bar">
+                <div style="padding-top: 20px;">
+                    <h1 class="title has-text-primary">MORE INFORMATION</h1>
+                </div>
             </div>
+            <div class="details" *ngIf="lengthOfWallet">
+                <div class="leftpanel">
+                    <div>
+                        <p>The Value of Unit Contibution</p>
+                    </div>
+                    <div>
+                        <p>For How Long? </p>
+                    </div>
+                    <div>
+                        <p>Number of Participating Wallets</p>
+                    </div>
+                    <div>
+                        <p>This Cycle will commence on</p>
+                    </div>
+                </div>
+                <div class="rightpanel" *ngFor="let cycle of cycleDetails">
+                    <div>
+                        <p>{{ cycle.cycleAmount }} </p>
+                    </div>
+                    <div>
+                        <p>{{ cycle.cycleDuration }}/{{ cycle.frequency}}
+                        </p>
+                    </div>
+                    <div>
+                        <p>{{ lengthOfWallets }} </p>
+                    </div>
+                    <div>
+                        <p>{{ cycle.cycleStartDate }} </p>
+                    </div>
+                </div>
+            </div>
+            <span *ngIf="alreadyJoined">You have already joined this circle</span>
+            <span *ngIf="insufficientFunds" style="color: red; padding-top: 5px;">INSUFFICIENT FUNDS <a routerLink="/wallet"><b>FUND YOUR WALLET NOW!</b></a></span>
+                <div *ngIf="lengthOfWallet && check" class="button" (click)="joinCycle()"
+                    class="button is-primary has-text-white">
+                    <p class="control" type="submit">
+                        Join This Cycle. (NGN {{ costOfCycle }})
+                    </p>
+                </div>
         </div>
     </div>
 </div>

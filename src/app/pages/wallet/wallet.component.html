@@ -1,14 +1,30 @@
 <div class="centered-content">
     <div class="container">
+        
         <div class="profile has-background-light" *ngFor="let wallets of wallet">
+            <div class="navigation">
+                <div class="todashboard">
+                    <a (click)="todashboard()">
+                        Dashboard
+                    </a>
+                </div>
+                |
+                <div class="logout">
+                    <a (click)="logout()">
+                        Logout
+                    </a>
+                </div>
+            </div>
             <h1 class="title has-text-primary">WALLET</h1>
             <div class="headers">
                 <div class="title has-text-secondary">WALLET ID: {{ wallets.walletId }} </div>
+
             </div>
             <div class="headers">
                 <div class="title has-text-secondary">BALANCE: NGN{{ wallets.walletAmount }} 
                     <span *ngIf="pendingTransactionExists" style="color: red;"><i>Pending</i></span>  </div>
             </div>
+
             <!-- Profile Display-->
             <div class="profile-content">
                 <div class="profile-tags title has-text-primary" [routerLink]="[wallets._id]">FUND WALLET</div>

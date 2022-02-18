@@ -41,4 +41,18 @@ export class WalletComponent implements OnInit {
   navigateWithdraw() {
     this.router.navigate(['wallet', this.wallet[0]._id, 'withdraw'])
   }
+
+  todashboard() {
+    this.walletService.getWallet().subscribe((wallet: Wallet) => {
+      this.profileService.updateUserDetails(this.authService.getUserId(), { wallet: wallet }).subscribe(() => {
+        this.router.navigate(['dashboard'])
+        console.log(wallet);
+      })
+    })
+  }
+
+  logout() {
+    this.authService.logout()
+    this.router.navigate(['login'])
+  }
 }
