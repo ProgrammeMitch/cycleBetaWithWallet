@@ -4,4 +4,5 @@ export interface Cycle {
     cycleStartDate: Date,
     frequency: String,
     wallet: Object
+    _id?: String
 }
