@@ -14,7 +14,6 @@
     }
 
     .step-content {
-        margin-top: 20px;
         position: relative;
         align-self: start;
         grid-row: 2 / -1;
@@ -23,8 +22,9 @@
 }
 
 .container {
-    display: inline-flex;
-    //position: realtive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     svg#checkbox {
         width: 30px;
@@ -95,8 +95,7 @@
 }
 
 .progress-line {
-    width: 230px;
-    margin: 0 3px;
+    width: 5vh;
     height: 1px;
     overflow: hidden;
     display: inline-block;

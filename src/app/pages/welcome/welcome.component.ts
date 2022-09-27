@@ -38,6 +38,13 @@ export class WelcomeComponent implements OnInit {
       occupation: ['', Validators.required],
       salary: ['', Validators.required],
       age: ['', Validators.required],
+      maritalStatus: ['', Validators.required],
+      address: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      bank: ['', Validators.required],
+      origin: ['', Validators.required],
+      nextOfKinName: ['', Validators.required],
+      nextOfKinPhoneNumber: ['', Validators.required],
     })
   }
 

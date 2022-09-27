@@ -1,63 +1,72 @@
 @import '../../../main-styles.scss';
-
-.container {
-    display: flex;
-    width: 100px;
-    height: 100%;
-    justify-content: center;
-    max-width: 1000px;
-    max-height: 680px;
-}
-
-.profile {
-    display: flex;
-    flex-direction: column;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
-    align-items: center;
-    padding: 30px;
-    width: 70%;
-    box-shadow: 0 20px 25px rgba(0, 0, 0, .2);
-
-    h1 {
-        font-weight: bolder;
-        font-size: 35px;
-        letter-spacing: .5rem;
+@media only screen and (min-width: 320px) {
+    .profile-content {
+        margin: auto -4.5%;
+        background-color: whitesmoke;
     }
 }
 
-.profile-content {
-    display: flex;
-    background: white;
-    padding: 20px 20px;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    overflow-x: hidden;
-    overflow-y: auto;
+@media only screen and (min-width: 720px) {
 
-    p {
-        margin-top: 10px;
-        padding-bottom: 10px;
-        font-size: 1.35rem;
+    .container {
+        display: flex;
+        width: 100px;
+        height: 100%;
+        justify-content: center;
+        max-width: 1000px;
+        max-height: 680px;
     }
-}
 
-.form-box {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-}
+    .profile {
+        display: flex;
+        flex-direction: column;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        align-items: center;
+        padding: 30px;
+        width: 70%;
+        box-shadow: 0 20px 25px rgba(0, 0, 0, .2);
 
-.control {
-    padding-left: 5px;
-    padding-right: 5px;
-}
+        h1 {
+            font-weight: bolder;
+            font-size: 2.5vh;
+            letter-spacing: .4rem;
+        }
+    }
 
-.selected {
-    width: 180%;
-    margin-top: -10px;
+    .profile-content {
+        background: white;
+        padding: 20px 20px;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        p {
+            margin-top: 10px;
+            padding-bottom: 10px;
+            font-size: 1.35rem;
+        }
+    }
+
+    .form-box {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .control {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .selected {
+        width: 180%;
+        margin-top: -10px;
+    }
+
 }

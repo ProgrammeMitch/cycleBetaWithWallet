@@ -28,6 +28,10 @@ html {
 
 html, body {
     height: 100%;
+    h3 {
+        font-size: 150%;
+        margin-bottom: 5%;
+    }
 }
 
 .centered-content {
@@ -35,8 +39,7 @@ html, body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 90%;
-    padding-top: 5%;
+    height: 100%;
 }
 
 
@@ -68,8 +71,8 @@ html, body {
 .todashboard:hover {
 
     a {
-            color: red;
-            font-size: larger;
+        color: red;
+        font-size: larger;
     }
 
 }
@@ -77,8 +80,30 @@ html, body {
 .logout:hover {
 
     a {
-            color: red;
-            font-size: larger;
+        color: red;
+        font-size: larger;
     }
 
+}
+
+@media only screen and (max-width: 720px) {
+    .container {
+        height: 100%
+    }
+
+    .profile {
+        height: 100%;
+        padding: 10% 5%;
+    }
+
+    .title {
+        font-size: 250%;
+        text-align: center;
+    }
+
+
+    p {
+        font-size: 150%;
+        margin-bottom: 5%;
+    }
 }
