@@ -1,5 +1,51 @@
 @import '../../../main-styles.scss';
 
+@media only screen and (min-width: 320px) {
+    html {
+        background: white;
+    }
+
+    .container {
+        height: 100%;
+        justify-content: center;
+    }
+
+    .profile {
+        padding: 10% 0 0 0;
+    }
+
+    .title {
+        font-family: 'Lato';
+        font-size: 150%;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        padding: 10px;
+    }
+
+    .profile-content {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        height: 100%;
+        border-radius: 5px;
+        margin-top: 5%;
+        box-shadow: 0 0 20px 3px rgb(0 0 0 / 20%);
+        
+        .profile-tags {
+            display: flex;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            background: $deep-yellow;
+            flex-grow: 1; 
+            font-size: 250%;   
+        }
+    }
+
+}
+
+@media only screen and (min-width: 720px) {
 .container {
     display: flex;
     width: 100px;
@@ -19,43 +65,19 @@
     padding: 30px;
     width: 70%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
     font-family: 'Lato';
-    font-size: 20px;
+    font-size: 3vh;
     text-transform: uppercase;
     letter-spacing: 2.5px;
-    
     padding: 10px;
 }
 
-.list-menu {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    flex-grow: 1;
-    font-size: 15px;
-    
-    .list-menu-item {
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        width: 100%;
-        color: #5f5f5f;
-        margin-bottom: 2.5px;
-        padding: 7px;
 
-        &:hover {
-            background: $light;
-        }
-
-        &.is-active {
-            background-color: $deep-yellow;
-            color: $dark-orange;
-        }
-    }
-}
 
 .profile-content {
     display: flex;
@@ -77,7 +99,7 @@
         width: 30%;
         height: 45%;
         flex-grow: 1;
-        font-size: 35px;
+        font-size: 2vh;
 
         &:hover {
             box-shadow: 1.5px 1.5px $orange;
@@ -91,4 +113,5 @@
     display: flex;
     flex-direction: column;
     padding-top: -30px;
+}
 }

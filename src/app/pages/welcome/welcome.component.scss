@@ -1,5 +1,9 @@
 @import '../../../main-styles.scss';
 @media only screen and (min-width: 320px) {
+    html {
+        background: white;
+    }
+    
     .profile-content {
         margin: auto -4.5%;
         background-color: whitesmoke;

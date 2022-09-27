@@ -29,13 +29,13 @@
                 </div>
                 <div class="profile-tags title has-text-primary" *ngIf="!locked">
                     <div class="flex-column">
-                        <p>MESSAGES</p> <br>
+                        <a>MESSAGES</a> <br>
 
                     </div>
                 </div>
                 <div class="profile-tags title has-text-primary" *ngIf="locked" style="cursor: not-allowed;">
                     <div class="flex-column">
-                        <p style="color: red;">MESSAGES</p>
+                        <a style="color: red;">MESSAGES</a>
                     </div>
                 </div>
                 <div class="profile-tags title has-text-primary" [disabled]="locked">INVEST</div>
