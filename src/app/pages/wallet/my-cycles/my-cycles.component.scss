@@ -1,5 +1,82 @@
 @import '../../../../main-styles.scss';
 
+@media only screen and (max-width: 720px) {
+    .container {
+        width: 100%;
+    }
+
+    .cycle-list {
+        display: flex;
+        flex-direction: column;
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .list-menu {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        font-size: 2vh;
+        flex-wrap: wrap;
+
+        .list-menu-item {
+            display: flex;
+            align-items: center;
+            border-radius: 10vh;
+            margin-right: 4.2vh;
+            background-color: pink;
+            color: #5f5f5f;
+            margin-bottom: 2vh;
+            padding: 2vh;
+
+            &:hover {
+                background: $light;
+            }
+
+            &.is-active {
+                background-color: $deep-yellow;
+                color: $dark-orange;
+            }
+        }
+    }
+
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, .2);
+    }
+
+    .profile-content {
+        background: white;
+        padding: 20px 20px;
+        width: 100%;
+
+
+        .profile-tags {
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            background: $deep-yellow;
+
+            &:hover {
+                box-shadow: 1.5px 1.5px $orange;
+                transition: ease-in-out 0.2s;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    .navigation {
+        top: 2%;
+    }
+}
+
+@media only screen and (min-width: 720px) {
 .container {
     display: flex;
     width: 100%;
@@ -105,4 +182,5 @@ p {
     flex-direction: row;
     flex-grow: 1;
     width: 100%;
+}
 }

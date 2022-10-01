@@ -102,8 +102,13 @@ body {
         padding: 10% 5%;
     }
 
+    .navigation {
+        right: 15%;
+        font-size: 2vh;
+    }
+
     a {
-        color: $dark-orange
+        color: red;
     }
 
     .profile-tags {
@@ -114,6 +119,6 @@ body {
     }
 
     p {
-        font-size: 150%;
+        font-size: 100%;
     }
 }

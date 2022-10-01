@@ -7,8 +7,6 @@
                     <p (click)="getDetails(cycle._id)">{{ cycle.cycleAmount }}/{{ cycle.frequency }}</p>
                 </a>
             </div>
-
-            <button class="button is-danger has-text-white" style="cursor: not-allowed;">Create Cycle</button>
         </div>
         <div class="profile has-background-light">
             <div class="top-bar">
@@ -35,9 +33,9 @@
                     <div class="card-content" (click)="leaveCycle(wallet._userId)">
                         <div class="media">
                             <div class="media-left">
-                                <figure class="image is-48x48">
+                                <!--<figure class="image is-48x48">
                                     <img alt="Placeholder image">
-                                </figure>
+                                </figure>-->
                             </div>
                             <div class="media-content">
                                 <p class="title is-4">{{ wallet._id }}</p>
