@@ -4,10 +4,14 @@
             <h1 class="title has-text-primary">WELCOME BACK {{ profiles.firstName }}</h1>
             <div class="headers">
                 <div class="title has-text-secondary">{{ profiles.username }} </div>
+
+                <div class="has-text-secondary" *ngIf="!completeProfile">
+                    <p> <a [routerLink]="['/welcome']" >INCOMPLETE PROFILE: </a> You have not provided some information. </p>
+                </div>
             </div>
 
             <!-- Profile Display-->
-            <div class="profile-content" [disabled]="walletPresent">
+            <div class="profile-content" *ngIf="completeProfile">
                 <div class="profile-tags title has-text-primary">
                     <a [routerLink]="['/wallet']" (click)=createWallet(profiles.username)>
                         WALLET

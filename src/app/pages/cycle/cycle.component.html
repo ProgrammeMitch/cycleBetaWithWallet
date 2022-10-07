@@ -83,6 +83,7 @@
             </div>
             <span *ngIf="alreadyJoined">You have already joined this circle</span>
             <span *ngIf="insufficientFunds" style="color: red; padding-top: 5px;">INSUFFICIENT FUNDS <a routerLink="/wallet"><b>FUND YOUR WALLET NOW!</b></a></span>
+            <span *ngIf="pendingTransfer" style="color: red; padding-top: 5px;">WALLET FUNDING IN PROCESS... <a routerLink="/wallet"><b>Please be Patient!</b></a></span>
                 <div *ngIf="lengthOfWallet && check" class="button" (click)="joinCycle()"
                     class="button is-primary has-text-white">
                     <p class="control" type="submit">

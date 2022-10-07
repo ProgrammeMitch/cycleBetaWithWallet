@@ -40,6 +40,10 @@ export class FundWalletComponent implements OnInit {
     this.walletService.getWallet().subscribe((wallet) => {
       let walletAmount = Number(wallet[0].walletAmount) + Number(this.fundWallet.value.walletAmount)
       console.log(walletAmount)
+      if (wallet[0].walletAmount === null) {
+        walletAmount = Number(this.fundWallet.value.walletAmount);
+      }
+      console.log(walletAmount)
       this.walletService.updateWallet(this.wallet[0]._id, { walletAmount: walletAmount }).subscribe(() => {
         this.walletService.updateWallet(this.wallet[0]._id + '/transactions', {
           transactions: {

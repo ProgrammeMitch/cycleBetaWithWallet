@@ -28,6 +28,7 @@ export class WalletComponent implements OnInit {
       console.log(this.transactions)
     })
 
+    //check if user has some pending transfers
     this.profileService.getUserDetails(this.authService.getUserId()).subscribe((profile: Profile) => {
       this.profile = profile;
       this.pendingTransactionExists = profile[0].pendingTransfer;

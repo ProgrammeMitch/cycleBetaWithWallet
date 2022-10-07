@@ -63,7 +63,11 @@ export class AdminComponent implements OnInit {
       }
 
       for (let i = 0; i < this.lengthOfUserObject; i++) {
-        this.userWallet.push(users[i].wallet)
+        if (users[i].wallet === undefined) {
+          continue;
+        } else {
+          this.userWallet.push(users[i].wallet)    
+        }
       }
 
       for (let i = 0; i < this.userWallet.length; i++) {

@@ -1,3 +1,9 @@
+@import '../../../main-styles.scss';
+
 .danger {
     color: red;
+}
+
+.centered-content {
+    background: linear-gradient(to right top, $deep-yellow, $orange);
 }

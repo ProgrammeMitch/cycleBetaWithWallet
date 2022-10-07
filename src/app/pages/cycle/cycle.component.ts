@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Cycle } from 'src/app/models/cycle.model';
+import { Profile } from 'src/app/models/profile.model';
 import { Wallet } from 'src/app/models/wallet.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
@@ -26,8 +28,11 @@ export class CycleComponent implements OnInit {
   alreadyJoined: boolean;
   costOfCycle = 0;
   insufficientFunds: boolean;
+  profile: Profile;
+  pendingTransactionExists: boolean;
+  pendingTransfer: boolean;
 
-  constructor(private authService: AuthService, private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private profileService: ProfileService, private authService: AuthService, private walletService: WalletService, private cycleService: CycleService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -37,6 +42,10 @@ export class CycleComponent implements OnInit {
       })
     })
 
+    this.profileService.getUserDetails(this.authService.getUserId()).subscribe((profile: Profile) => {
+      this.profile = profile;
+      this.pendingTransactionExists = profile[0].pendingTransfer;
+    })
 
     this.cycleService.getCycles().subscribe((cycles: Cycle) => {
       this.cycles = cycles;
@@ -92,7 +101,12 @@ export class CycleComponent implements OnInit {
 
 
   joinCycle() {
-    this.walletService.getWallet().subscribe((wallet: Wallet) => {
+    if (this.pendingTransactionExists) {
+      this.pendingTransfer = true;
+      console.log('Insufficient Funds')
+    } else
+
+    {this.walletService.getWallet().subscribe((wallet: Wallet) => {
       console.log(wallet[0]._id)
       console.log(this.wallets)
 
@@ -162,7 +176,7 @@ export class CycleComponent implements OnInit {
 
 
 
-    })
+    })}
   }
 
   leaveCycle(userId: String) {
